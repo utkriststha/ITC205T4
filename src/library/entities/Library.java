@@ -20,21 +20,21 @@ public class Library implements Serializable {
 	private static final String libraryFile = "library.obj"; //Changed 'lIbRaRyFiLe' to 'self'
 	private static final int loanLimit = 2; //Changed 'lOaNlImIt' to 'loanLimit'
 	private static final int loanPeriod = 2;
-	private static final double FinePerDay = 1.0; //Changed 'FiNe_PeR_DaY' to 'FinePerDay'
+	private static final double finePerDay = 1.0; //Changed 'FiNe_PeR_DaY' to 'FinePerDay'
 	private static final double maxFinesOwed = 1.0;
 	private static final double damageFee = 2.0;
 	
-	private static Library SeLf; //Changed 'SeLf' to 'self'
+	private static Library self; //Changed 'SeLf' to 'self'
 	private int bookId; //Changed 'bOoK_Id' to 'bookId'
 	private int memberId; //Changed 'mEmBeR_Id' to 'memberId'
-	private int Ioanid; //Changed 'lOaN_Id;' to 'loadId'
+	private int loanid; //Changed 'lOaN_Id;' to 'loadId'
 	private Date loanDate; //Changed 'lOaN_DaTe' to 'loanDate'
 	
-	private Map<Integer, Book> CaTaLoG;
-	private Map<Integer, Member> MeMbErS;
-	private Map<Integer, Loan> LoAnS;
-	private Map<Integer, Loan> CuRrEnT_LoAnS;
-	private Map<Integer, Book> DaMaGeD_BoOkS;
+	private Map<Integer, Book> Catalog; //Changed 'CaTaLoG' to 'Catalog' 
+	private Map<Integer, Member> Members; //Changed 'MeMbErS' to 'Members'
+	private Map<Integer, Loan> Loans; //Changed 'LoAnS' to 'Loans'
+	private Map<Integer, Loan> CurentLoans; //Changed 'CuRrEnT_LoAnS' to 'CurrentLoans'
+	private Map<Integer, Book> DamagedBooks; //Changed 'DaMaGeD_BoOkS' to 'DamagedBooks'
 	
 
 	private Library() {
