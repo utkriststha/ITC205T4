@@ -17,18 +17,18 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class Library implements Serializable {
 	
-	private static final String lIbRaRyFiLe = "library.obj";
-	private static final int lOaNlImIt = 2;
+	private static final String libraryFile = "library.obj"; //Changed 'lIbRaRyFiLe' to 'self'
+	private static final int loanLimit = 2; //Changed 'lOaNlImIt' to 'loanLimit'
 	private static final int loanPeriod = 2;
-	private static final double FiNe_PeR_DaY = 1.0;
+	private static final double FinePerDay = 1.0; //Changed 'FiNe_PeR_DaY' to 'FinePerDay'
 	private static final double maxFinesOwed = 1.0;
 	private static final double damageFee = 2.0;
 	
-	private static Library SeLf;
-	private int bOoK_Id;
-	private int mEmBeR_Id;
-	private int lOaN_Id;
-	private Date lOaN_DaTe;
+	private static Library SeLf; //Changed 'SeLf' to 'self'
+	private int bookId; //Changed 'bOoK_Id' to 'bookId'
+	private int memberId; //Changed 'mEmBeR_Id' to 'memberId'
+	private int Ioanid; //Changed 'lOaN_Id;' to 'loadId'
+	private Date loanDate; //Changed 'lOaN_DaTe' to 'loanDate'
 	
 	private Map<Integer, Book> CaTaLoG;
 	private Map<Integer, Member> MeMbErS;
