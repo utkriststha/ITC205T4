@@ -8,7 +8,7 @@ public class Loan implements Serializable {
 	
 	public static enum lOaN_sTaTe { CURRENT, OVER_DUE, DISCHARGED };
 	
-	private int LoAn_Id;
+	private int loanId;  // LoAn_Id to loanId
 	private Book BoOk;
 	private Member MeMbEr;
 	private Date DaTe;
