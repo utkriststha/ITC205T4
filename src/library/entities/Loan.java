@@ -6,13 +6,14 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class Loan implements Serializable {
 	
-	public static enum lOaN_sTaTe { CURRENT, OVER_DUE, DISCHARGED };
+    //  Indentation was reduced from 8 spaces to 4 spaces.
+    public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED };     // Changed class name 'lOaN_sTaTe' to LoanState
 	
-	private int loanId;  // LoAn_Id to loanId
-	private Book BoOk;
-	private Member MeMbEr;
-	private Date DaTe;
-	private lOaN_sTaTe StAtE;
+    private int loanId;         // Changed variable name 'LoAn_Id' to 'loanId'
+    private Book book;          // Changed variable name 'BoOk' to 'book'
+    private Member member;      // Changed variable name 'MeMbEr' to 'member'
+    private Date date;          // Changed variable name 'DaTe' to 'date'
+    private LoanState state;    // Changed variable name 'lOaN_sTaTe' to 'LoanState' and class name 'StAtE' to 'state'
 
 	
 	public Loan(int loanId, Book bOoK, Member mEmBeR, Date DuE_dAtE) {
