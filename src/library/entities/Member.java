@@ -8,12 +8,12 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class Member implements Serializable {
 
-	private String Last_Name; 	// chnaged variable name 'LaSt_NaMe' to 'Last_Name'
-	private String FirsT_Name;	// changed variable name 'FiRsT_NaMe' to 'First_Name'
-	private String Email_AddresS;	// changed variable name 'EmAiL_AdDrEsS' to 'Email_Address'
-	private int Phone_Number;	// changed variable name 'PhOnE_NuMbEr' to 'Phone_Number'
-	private int Member_Id;		// changed variable name 'MeMbEr_Id' to ' Member_Id'
-	private double Fines_Owing;	// changed variable name 'FiNeS_OwInG' to 'Fines_Owing'
+	private String lastName; 	// chnaged variable name 'LaSt_NaMe' to 'lastName'
+	private String firsTName;	// changed variable name 'FiRsT_NaMe' to 'firstName'
+	private String emailAddresS;	// changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
+	private int phoneNumber;	// changed variable name 'PhOnE_NuMbEr' to 'phoneNumber'
+	private int memberId;		// changed variable name 'MeMbEr_Id' to ' memberId'
+	private double finesOwing;	// changed variable name 'FiNeS_OwInG' to 'finesOwing'
 	
 	private Map<Integer, Loan> cUrReNt_lOaNs;
 
