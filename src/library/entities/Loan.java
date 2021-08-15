@@ -27,7 +27,7 @@ public class Loan implements Serializable {
 
 	
     public void checkOverDue() {			           // Changed method name 'cHeCk_OvEr_DuE' to 'checkOverDue'.
-        if (StAtE == lOaN_sTaTe.CURRENT &&			   // Changed variable name 'StAtE' to 'state' and 'lOaN_sTaTe.CURRENT' to 'LoanState.CURRENT'. 
+        if (state == LoanState.CURRENT &&			   // Changed variable name 'StAtE' to 'state' and 'lOaN_sTaTe.CURRENT' to 'LoanState.CURRENT'. 
             Calendar.getInstance().getDate().after(date)) 	   // Changed variable name  'Calendar.gEtInStAnCe().gEt_DaTe().after(DaTe)' to 'Calendar.getInstance().getDate().after(date)'.
   	this.state = LoanState.OVER_DUE;		           // Changed variable name 'this.StAtE' to 'this.state' and  'lOaN_sTaTe.OVER_DUE' to 'LoanState.OVER_DUE'.
 	}
