@@ -7,7 +7,7 @@ import java.util.Map;
 
 @SuppressWarnings("serial")
 public class Member implements Serializable {
-	// Indentation was reduced from 8 spaces to 4 spaces
+	//Indentation was reduced from 8 spaces to 4 spaces
 	private String lastName; 	// chnaged variable name 'LaSt_NaMe' to 'lastName'
 	private String firsTName;	// changed variable name 'FiRsT_NaMe' to 'firstName'
 	private String emailAddresS;	// changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
