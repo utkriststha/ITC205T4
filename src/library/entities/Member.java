@@ -7,18 +7,18 @@ import java.util.Map;
 
 @SuppressWarnings("serial")
 public class Member implements Serializable {
-	//Indentation was reduced from 8 spaces to 4 spaces
-	private String lastName;        // chnaged variable name 'LaSt_NaMe' to 'lastName'
-	private String firsTName;	    // changed variable name 'FiRsT_NaMe' to 'firstName'
-	private String emailAddresS;	// changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
-	private int phoneNumber;	    // changed variable name 'PhOnE_NuMbEr' to 'phoneNumber'
-	private int memberId;		    // changed variable name 'MeMbEr_Id' to ' memberId'
-	private double finesOwing;	    // changed variable name 'FiNeS_OwInG' to 'finesOwing'
+    //Indentation was reduced from 8 spaces to 4 spaces
+    private String lastName;        // chnaged variable name 'LaSt_NaMe' to 'lastName'
+    private String firsTName;	    // changed variable name 'FiRsT_NaMe' to 'firstName'
+    private String emailAddresS;	// changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
+    private int phoneNumber;	    // changed variable name 'PhOnE_NuMbEr' to 'phoneNumber'
+    private int memberId;		    // changed variable name 'MeMbEr_Id' to ' memberId'
+    private double finesOwing;	    // changed variable name 'FiNeS_OwInG' to 'finesOwing'
 	
-	private Map<Integer, Loan> cUrReNt_lOaNs;
+    private Map<Integer, Loan> cUrReNt_lOaNs;
 
 	
-	public Member(String lAsT_nAmE, String fIrSt_nAmE, String eMaIl_aDdReSs, int pHoNe_nUmBeR, int mEmBeR_iD) {
+    public Member(String lAsT_nAmE, String fIrSt_nAmE, String eMaIl_aDdReSs, int pHoNe_nUmBeR, int mEmBeR_iD) {
 		this.LaSt_NaMe = lAsT_nAmE;
 		this.FiRsT_NaMe = fIrSt_nAmE;
 		this.EmAiL_AdDrEsS = eMaIl_aDdReSs;
