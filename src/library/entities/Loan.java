@@ -18,19 +18,18 @@ public class Loan implements Serializable {
 
     //  Indentation was reduced from 8 spaces to 4 spaces.
     public Loan(int loanId, Book book, Member member, Date dueDate) {   // Changed variable name 'bOoK' to 'book', 'mEmBeR' to 'member', and 'DuE_dAtE' to 'dueDate'.
-        this.loanId = loanId;						// Changed variable name 'this.LoAn_Id' to 'this.loanId'.
-        this.book = book;						// Changed variable name 'this.BoOk' to 'this.book' and 'bOoK' to 'book'.
-        this.member = member;						// Changed variable name 'this.MeMbEr' to 'this.member' and 'mEmBeR' to 'member'.
-        this.date = dueDate;						// Changed variable name 'this.DaTe' to 'this.date' and 'DuE_dAtE' to 'dueDate'. 
-        this.state = lOaN_sTaTe.CURRENT;				// Changed variable name 'this.StAtE' to 'this.state' and 'lOaN_sTaTe.CURRENT' to 'lOaN_sTaTe.CURRENT'.
+        this.loanId = loanId;											// Changed variable name 'this.LoAn_Id' to 'this.loanId'.
+        this.book = book;												// Changed variable name 'this.BoOk' to 'this.book' and 'bOoK' to 'book'.
+        this.member = member;											// Changed variable name 'this.MeMbEr' to 'this.member' and 'mEmBeR' to 'member'.
+        this.date = dueDate;											// Changed variable name 'this.DaTe' to 'this.date' and 'DuE_dAtE' to 'dueDate'. 
+        this.state = LoanState.CURRENT;									// Changed variable name 'this.StAtE' to 'this.state' and 'lOaN_sTaTe.CURRENT' to 'LoanState.CURRENT'.
 	}
 
 	
-	public void cHeCk_OvEr_DuE() {
-		if (StAtE == lOaN_sTaTe.CURRENT &&
-			Calendar.gEtInStAnCe().gEt_DaTe().after(DaTe)) 
-			this.StAtE = lOaN_sTaTe.OVER_DUE;			
-		
+	public void checkOverDue() {							   // Changed method name 'cHeCk_OvEr_DuE' to 'checkOverDue'.
+		if (StAtE == lOaN_sTaTe.CURRENT &&					   // Changed variable name 'StAtE' to 'state' and 'lOaN_sTaTe.CURRENT' to 'LoanState.CURRENT'. 
+			Calendar.getInstance().getDate().after(date)) 	   // Changed variable name  'Calendar.gEtInStAnCe().gEt_DaTe().after(DaTe)' to 'Calendar.getInstance().getDate().after(date)'.
+			this.state = LoanState.OVER_DUE;			 	   // Changed variable name 'this.StAtE' to 'this.state' and  'lOaN_sTaTe.OVER_DUE' to 'LoanState.OVER_DUE'.
 	}
 
 	
