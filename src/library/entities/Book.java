@@ -5,13 +5,13 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Book implements Serializable {
 	
-	private String tItLe;
-	private String AuThOr;
-	private String CALLNO;
-	private int iD;
+	private String Title; //Changed 'tItLe' to 'Title' 
+	private String Author;//Changed 'AuThOr' to 'Author'
+	private String CallNo;//Changed 'CALLNO' to 'CallNo'
+	private int Id;//Changed 'iD' to 'Id'
 	
-	private enum sTaTe { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private sTaTe StAtE;
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };//Changed 'sTaTe' to 'State'
+	private State;//Changed 'private sTaTe StAtE' to 'private State'
 	
 	
 	public Book(String author, String title, String callNo, int id) {
