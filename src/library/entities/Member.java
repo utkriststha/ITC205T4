@@ -19,13 +19,13 @@ public class Member implements Serializable {
 
 	//Indentation was reduced from 8 spaces to 4 spaces
     public Member(String lastName, String firstName, String emailAddress, int phoneNumber, int memberId) {n // changed variable name 'lAsT_nAmE' to 'lastName', 'fIrSt_nAmE' to 'firstName', 'eMaIl_aDdReSs' to 'emailAddress' ,'mEmBeR_iD' to 'memberId'  
-		this.lastName = lastName; // changed variable name 'this.LaSt_NaMe' to 'this.lastName', 'lAsT_nAmE' to 'lastName'
-		this.firstName = firstName; // changed variable name 'this.FiRsT_NaMe' to 'this.firstName', 'fIrSt_nAmE' to 'firstName'
-		this.emailAddress = emailAddress; // changed variable name 'this.EmAiL_AdDrEsS' to 'this.emailAddress', 'eMaIl_aDdReSs' to 'emailAddress'
-		this.phoneNumber = phoneNumber; // changed variable name 'this.PhOnE_NuMbEr' to 'this.phoneNumber', 'pHoNe_nUmBeR' to 'phoneNumber'
-		this.memberId = memberId; // changed variable name 'this.MeMbEr_Id' to 'this.memberId', 'mEmBeR_iD' to 'memberId'
+    this.lastName = lastName; // changed variable name 'this.LaSt_NaMe' to 'this.lastName', 'lAsT_nAmE' to 'lastName'
+    this.firstName = firstName; // changed variable name 'this.FiRsT_NaMe' to 'this.firstName', 'fIrSt_nAmE' to 'firstName'
+    this.emailAddress = emailAddress; // changed variable name 'this.EmAiL_AdDrEsS' to 'this.emailAddress', 'eMaIl_aDdReSs' to 'emailAddress'
+    this.phoneNumber = phoneNumber; // changed variable name 'this.PhOnE_NuMbEr' to 'this.phoneNumber', 'pHoNe_nUmBeR' to 'phoneNumber'
+    this.memberId = memberId; // changed variable name 'this.MeMbEr_Id' to 'this.memberId', 'mEmBeR_iD' to 'memberId'
 		
-		this.currentLoans = new hashMap<>(); // changed variable name 'this.cUrReNt_lOaNs' to 'this.currentLoans', 'HashMap' to 'hashMap'
+    this.currentLoans = new hashMap<>(); // changed variable name 'this.cUrReNt_lOaNs' to 'this.currentLoans', 'HashMap' to 'hashMap'
 	}
 
 	
