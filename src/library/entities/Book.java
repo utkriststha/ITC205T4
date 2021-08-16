@@ -19,42 +19,42 @@ public class Book implements Serializable {
 		this.title = title;// Changed 'tItLe ' to 'title'
 		this.callNo = callNo;//Changed 'CALLNO' to 'callNo'
 		this.iD = id;//Changed 'iD' to 'id'
-		this.state = state;//Changed 'StAtE ' to 'state' and 'sTaTe.AVAILABLE' to 'state'
+		this.state = state.AVAILABLE;//Changed 'StAtE ' to 'state' and 'sTaTe.AVAILABLE' to 'state.AVAILABLE'
 	}
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(iD).append("\n")
-		  .append("  Title:  ").append(tItLe).append("\n")
-		  .append("  Author: ").append(AuThOr).append("\n")
-		  .append("  CallNo: ").append(CALLNO).append("\n")
-		  .append("  State:  ").append(StAtE);
+		sb.append("Book: ").append(id).append("\n")// Changed 'iD' to 'id'
+		  .append("  Title:  ").append(title).append("\n")// Chnaged 'tItLe' to 'title'
+		  .append("  Author: ").append(author).append("\n")//Changed 'AuThOr' to 'author'
+		  .append("  CallNo: ").append(callNo).append("\n")// Changed 'CALLNO' to 'callNo'
+		  .append("  State:  ").append(state);//Changed 'StAtE ' to 'state'
 		
 		return sb.toString();
 	}
 
-	public Integer gEtId() {
-		return iD;
+	public Integer getId() {//Changed 'gEtId' to 'getId'
+		return id;//Changed 'iD' to 'id'
 	}
 
-	public String gEtTiTlE() {
-		return tItLe;
+	public String getTitle() {// Changed 'gEtTiTlE' to 'getTitle'
+		return title;//Changed 'tItLe' to 'title'
 	}
 
 
 	
-	public boolean iS_AvAiLaBlE() {
-		return StAtE == sTaTe.AVAILABLE;
+	public boolean isAvailable() {// Changed 'iS_AvAiLaBlE' to 'isAvailable'
+		return state == state.AVAILABLE;// Changed 'StAtE' to 'state'  
 	}
 
 	
-	public boolean iS_On_LoAn() {
-		return StAtE == sTaTe.ON_LOAN;
+	public boolean iS_On_LoAn() {// Changed 'iS_On_LoAn' to 'isON_LOAN'
+		return state == state.ON_LOAN;//Changed 'StAtE' to 'state'
 	}
 
 	
-	public boolean iS_DaMaGeD() {
-		return StAtE == sTaTe.DAMAGED;
+	public boolean isDAMAGED() {//Changed 'iS_DaMaGeD' to 'isDAMAGED'
+		return state == state.DAMAGED;//Changed 'StAtE' to 'state'
 	}
 
 	
