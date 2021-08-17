@@ -46,18 +46,18 @@ public class Loan implements Serializable {
 	}
 	
     public String toString() {
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");				// Changed variable name 'sdf' to 'simpleDateFormat'.
 
-	StringBuilder sb = new StringBuilder();
-	sb.append("Loan:  ").append(LoAn_Id).append("\n")
-          .append("  Borrower ").append(MeMbEr.GeT_ID()).append(" : ")
-          .append(MeMbEr.GeT_LaSt_NaMe()).append(", ").append(MeMbEr.GeT_FiRsT_NaMe()).append("\n")
-	  .append("  Book ").append(BoOk.gEtId()).append(" : " )
-	  .append(BoOk.gEtTiTlE()).append("\n")
-	  .append("  DueDate: ").append(sdf.format(DaTe)).append("\n")
-	  .append("  State: ").append(StAtE);	
+	StringBuilder stringBuilder = new StringBuilder();						// Changed variable name 'sb' to 'stringBuilder'.
+	stringBuilder.append("Loan:  ").append(loanId).append("\n")					// Changed variable name 'sb' to 'stringBuilder' and 'LoAn_Id' to 'loanId'.
+          .append("  Borrower ").append(member.getId()).append(" : ")					// Changed variable and method name 'MeMbEr.GeT_ID()' to 'member.getId()'.
+          .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")		// Changed variable and method name 'MeMbEr.GeT_LaSt_NaMe()' to 'member.getLastName()' and 'MeMbEr.GeT_FiRsT_NaMe()' to 'member.getFirstName()'.
+	  .append("  Book ").append(book.getId()).append(" : " )					// Changed variable and method name 'BoOk.gEtId()' to 'book.getId()'.
+	  .append(book.getTitle()).append("\n")								// Changed variable and method name 'BoOk.gEtTiTlE()' to 'book.getTitle()'.
+	  .append("  DueDate: ").append(simpleDateFormat.format(date)).append("\n")			// Changed variable and method name 'sdf.format(DaTe)' to 'simpleDateFormat.format(date)'.
+	  .append("  State: ").append(state);								// Changed variable name 'StAtE' to 'state'.
 	    
-	return sb.toString();
+	return stringBuilder.toString();								// Changed variable name 'sb' to 'stringBuilder'.
 	}
 
     public Member GeT_MeMbEr() {
