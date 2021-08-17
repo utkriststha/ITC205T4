@@ -27,7 +27,7 @@ public class Library implements Serializable {
 	private static Library self; //Changed 'SeLf' to 'self'
 	private int bookId; //Changed 'bOoK_Id' to 'bookId'
 	private int memberId; //Changed 'mEmBeR_Id' to 'memberId'
-	private int loanid; //Changed 'lOaN_Id;' to 'loadId'
+	private int loanId; //Changed 'lOaN_Id;' to 'loadId'
 	private Date loanDate; //Changed 'lOaN_DaTe' to 'loanDate'
 	
 	private Map<Integer, Book> catalog; //Changed 'CaTaLoG' to 'catalog' 
@@ -54,8 +54,7 @@ public class Library implements Serializable {
 			Path path = Paths.get(LIBRARY_FILE); //Changed 'lIbRaRyFiLe' to 'LIBRARY_FILE' & 'PATH' to 'path'		
 			if (Files.exists(path)) { //Changed 'PATH' to 'path'	
 				try (ObjectInputStream libraryFile = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) { //Changed 'lIbRaRyFiLe' to 'LIBRARY_FILE' & 'LiBrArY_FiLe' to 'libraryFile'
-			    
-					SeLf = (Library) libraryFile.readObject(); //Changed 'LiBrArY_FiLe' to 'libraryFile'
+					self = (Library) libraryFile.readObject(); //Changed 'LiBrArY_FiLe' to 'libraryFile' & 'SeLf' to 'self'
 					Calendar.getInstance().setDate(self.loanDate); //Changed 'gEtInStAnCe()' to 'getInstance' & 'SeT_DaTe' to 'setDate' & 'lOaN_DaTe' to 'loadDate' & 'SeLf' to 'self'
 					libraryFile.close(); //Changed 'LiBrArY_FiLe' to 'libraryFile'
 				}
@@ -90,7 +89,7 @@ public class Library implements Serializable {
 	
 	
 	public int getMemberId() {//Changed 'gEt_MeMbEr_Id' to 'getMemberId'
-		return mEmBeR_Id; //Changed 'mEmBeR_Id' to 'memberId'
+		return memberId; //Changed 'mEmBeR_Id' to 'memberId'
 	}
 	
 	
@@ -100,80 +99,80 @@ public class Library implements Serializable {
 
 	
 	private int getNextMemberId() { //Changed 'gEt_NeXt_MeMbEr_Id' to 'getNextMemberId'
-		return mEmBeR_Id++; //Changed 'mEmBeR_Id' to 'memberId'
+		return memberId++; //Changed 'mEmBeR_Id' to 'memberId'
 	}
 
 	
 	private int getNextLoanId() { //Changed 'gEt_NeXt_LoAn_Id' to 'getNextLoadId'
-		return loanid++; //Changed 'lOaN_Id;' to 'loadId'
+		return loanId++; //Changed 'lOaN_Id;' to 'loadId'
 	}
 
 	
-	public List<Member> lIsT_MeMbErS() {		
-		return new ArrayList<Member>(MeMbErS.values()); 
+	public List<Member> listMembers() { // Changed 'LIsT_MeMbErS' to 'listMembers'	
+		return new ArrayList<Member>(member.values()); //Changed 'MeMbErS' to 'members'
 	}
 
 
-	public List<Book> lIsT_BoOkS() {		
-		return new ArrayList<Book>(CaTaLoG.values()); 
+	public List<Book> listBooks() { // Changed 'lIsT_BoOkS' to 'listMembers'		
+		return new ArrayList<Book>(CaTaLoG.values()); //Changed 'CaTaLoG' to 'catalog' 
 	}
 
 
-	public List<Loan> lISt_CuRrEnT_LoAnS() {
-		return new ArrayList<Loan>(CuRrEnT_LoAnS.values());
+	public List<Loan> listCurentLoans() { // Changed 'lISt_CuRrEnT_LoAnS' to 'listMembers'	
+		return new ArrayList<Loan>(curentLoans.values()); //Changed 'CuRrEnT_LoAnS' to 'currentLoans'
 	}
 
 
-	public Member aDd_MeMbEr(String lastName, String firstName, String email, int phoneNo) {		
-		Member member = new Member(lastName, firstName, email, phoneNo, gEt_NeXt_MeMbEr_Id());
-		MeMbErS.put(member.GeT_ID(), member);		
+	public Member addMember(String lastName, String firstName, String email, int phoneNo) { //Changed 'aDd_MeMbEr' to 'addMember'		
+		Member member = new Member(lastName, firstName, email, phoneNo, getNextMemberId()); //Changed 'gEt_NeXt_MeMbEr_Id' to 'getNextMemberId'
+		members.put(member.getId(), member);// Changed 'GeT_ID' to 'getId' & gEt_MeMbEr	
 		return member;
 	}
 
 	
-	public Book aDd_BoOk(String a, String t, String c) {		
-		Book b = new Book(a, t, c, gEt_NeXt_BoOk_Id());
-		CaTaLoG.put(b.gEtId(), b);		
-		return b;
+	public Book addBook(String a, String t, String c) {// Changed 'aDd_BoOk' to 'addBook'
+		Book book = new Book(a, t, c, getNextBookId()); // Changed 'gEt_NeXt_BoOk_Id' to 'getNextBookId' & 'b' to 'book'
+		catalog.put(b.getId(), b); //Changed 'CaTaLoG' to 'catalog' & 'gEtId' to 'getId'
+		return book;
 	}
 
 	
-	public Member gEt_MeMbEr(int memberId) {
-		if (MeMbErS.containsKey(memberId)) 
-			return MeMbErS.get(memberId);
+	public Member getMember(int memberId) { //Changed 'gEt_MeMbEr' to 'getMember'
+		if (members.containsKey(memberId)) //Changed 'MeMbErS' to 'members'
+			return members.get(memberId); //Changed 'MeMbErS' to 'members'
 		return null;
 	}
 
 	
-	public Book gEt_BoOk(int bookId) {
-		if (CaTaLoG.containsKey(bookId)) 
-			return CaTaLoG.get(bookId);		
+	public Book getBook(int bookId) { //Changed 'gEt_BoOk' to 'getBook'
+		if (catalog.containsKey(bookId))  //Changed 'CaTaLoG' to 'catalog' 
+			return catalog.get(bookId); //Changed 'CaTaLoG' to 'catalog' 	
 		return null;
 	}
 
 	
-	public int gEt_LoAn_LiMiT() {
-		return lOaNlImIt;
+	public int getLoanLimit() {//Changed 'gEt_LoAn_LiMiT' to 'getLoanLimit'
+		return LOAN_LIMIT; //Changed 'lOaNlImIt' to 'LOAN_LIMIT'
 	}
 
 	
-	public boolean cAn_MeMbEr_BoRrOw(Member member) {		
-		if (member.gEt_nUmBeR_Of_CuRrEnT_LoAnS() == lOaNlImIt ) 
+	public boolean canMemberBorrow(Member member) {//Changed 'cAn_MeMbEr_BoRrOw' to 'canMemberBorrow'		
+		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT) //Changed 'gEt_nUmBeR_Of_CuRrEnT_LoAnS' to 'getNumberOfCurrentLoans' & 'lOaNlImIt' to 'LOAN_LIMIT'
 			return false;
 				
-		if (member.FiNeS_OwEd() >= maxFinesOwed) 
+		if (member.fineOwed() >= MAX_FINES_OWED) //Changed 'FiNeS_OwEd' to 'fineOwed' & 'maxFinesOwed' to 'MAX_FINES_OWED'
 			return false;
 				
-		for (Loan loan : member.GeT_LoAnS()) 
-			if (loan.Is_OvEr_DuE()) 
+		for (Loan loan : member.getLoans()) // Changed 'GeT_LoAnS' & 'getLoans'
+			if (loan.isOverDue()) //Changed 'Is_OvEr_DuE' & 'isOverDue'
 				return false;
 			
 		return true;
 	}
 
 	
-	public int gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr(Member MeMbEr) {		
-		return lOaNlImIt - MeMbEr.gEt_nUmBeR_Of_CuRrEnT_LoAnS();
+	public int getNumberOfLoansRemainingForMember(Member member) { //Changed 'MeMbErS' to 'members' & 'gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr' to 'getNumberOfLoansRemainingForMember'
+		return LOAN_LIMIT - member.getNumberOfCurrentLoans(); //Changed 'MeMbErS' to 'members' & 'lOaNlImIt' to 'LOAN_LIMIT' & 'gEt_nUmBeR_Of_CuRrEnT_LoAnS' to 'getNumberOfCurrentLoans'
 	}
 
 	
