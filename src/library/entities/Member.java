@@ -9,8 +9,8 @@ import java.util.Map;
 public class Member implements Serializable {
     //Indentation was reduced from 8 spaces to 4 spaces
     private String lastName;        // chnaged variable name 'LaSt_NaMe' to 'lastName'
-    private String firsTName;	    // changed variable name 'FiRsT_NaMe' to 'firstName'
-    private String emailAddresS;	// changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
+    private String firstName;	    // changed variable name 'FiRsT_NaMe' to 'firstName'
+    private String emailAddress;	// changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
     private int phoneNumber;	    // changed variable name 'PhOnE_NuMbEr' to 'phoneNumber'
     private int memberId;		    // changed variable name 'MeMbEr_Id' to ' memberId'
     private double finesOwing;	    // changed variable name 'FiNeS_OwInG' to 'finesOwing'
