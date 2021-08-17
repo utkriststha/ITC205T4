@@ -33,16 +33,16 @@ public class Loan implements Serializable {
 	}
 
 	
-    public boolean Is_OvEr_DuE() {
-        return StAtE == lOaN_sTaTe.OVER_DUE;
+    public boolean isOverDue() {				   // Changed method name 'Is_OvEr_DuE' to 'isOverDue'. 
+        return state == LoanState.OVER_DUE;			   // Changed variable name 'StAtE' to 'state' and  'lOaN_sTaTe.OVER_DUE' to 'LoanState.OVER_DUE'.
 	}
 	
-    public Integer GeT_Id() {
-        return LoAn_Id;
+    public Integer getId() {					  // Changed method name 'GeT_Id' to 'getId'.
+        return loanId;						  // Changed variable name 'LoAn_Id' to 'loanId'.
 	}
 
-    public Date GeT_DuE_DaTe() {
-	return DaTe;
+    public Date getDueDate() {				 	  // Changed method name 'GeT_DuE_DaTe' to 'getDueDate'.
+	return date;    					  // Changed variable name 'DaTe' to 'date'.
 	}
 	
     public String toString() {
