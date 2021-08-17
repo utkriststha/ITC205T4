@@ -14,10 +14,10 @@ public class Member implements Serializable {
     private int phoneNumber;	    // changed variable name 'PhOnE_NuMbEr' to 'phoneNumber'
     private int memberId;		    // changed variable name 'MeMbEr_Id' to ' memberId'
     private double finesOwing;	    // changed variable name 'FiNeS_OwInG' to 'finesOwing'
-	//Indentation was reduced from 8 spaces to 4 spaces
+    //Indentation was reduced from 8 spaces to 4 spaces
     private Map<Integer, Loan> currentLoans; //changed variable name 'cUrReNt_lOaNs' to 'currentLoans'
 
-	//Indentation was reduced from 8 spaces to 4 spaces
+    //Indentation was reduced from 8 spaces to 4 spaces
     public Member(String lastName, String firstName, String emailAddress, int phoneNumber, int memberId) {n // changed variable name 'lAsT_nAmE' to 'lastName', 'fIrSt_nAmE' to 'firstName', 'eMaIl_aDdReSs' to 'emailAddress' ,'mEmBeR_iD' to 'memberId'  
     this.lastName = lastName; // changed variable name 'this.LaSt_NaMe' to 'this.lastName', 'lAsT_nAmE' to 'lastName'
     this.firstName = firstName; // changed variable name 'this.FiRsT_NaMe' to 'this.firstName', 'fIrSt_nAmE' to 'firstName'
@@ -28,19 +28,19 @@ public class Member implements Serializable {
     this.currentLoans = new hashMap<>(); // changed variable name 'this.cUrReNt_lOaNs' to 'this.currentLoans', 'HashMap' to 'hashMap'
 	}
 
-	
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(MeMbEr_Id).append("\n")
-		  .append("  Name:  ").append(LaSt_NaMe).append(", ").append(FiRsT_NaMe).append("\n")
-		  .append("  Email: ").append(EmAiL_AdDrEsS).append("\n")
-		  .append("  Phone: ").append(PhOnE_NuMbEr)
-		  .append("\n")
-		  .append(String.format("  Fines Owed :  $%.2f", FiNeS_OwInG))
-		  .append("\n");
+    //Indentation was reduced from 8 spaces to 4 spaces
+    public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Member:  ").append(memberId).append("\n") // chanaged variable name 'MeMbEr_Id' to 'memberId'
+    .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n") // changed variable name 'LaSt_NaMe' to 'lastName', 'FiRsT_NaMe' to 'firstName'
+    .append("  Email: ").append(emailAddress).append("\n") // changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
+    .append("  Phone: ").append(phoneNumber) // changed variable name 'PhOnE_NuMbEr' to 'phoneNumber'
+    .append("\n")
+    .append(String.format("  Fines Owed :  $%.2f", finesOwing)) // changed variable name 'FiNeS_OwInG' to 'finesOwing'
+    .append("\n");
 		
-		for (Loan LoAn : cUrReNt_lOaNs.values()) {
-			sb.append(LoAn).append("\n");
+    for (Loan loan : currentLoans.values()) { // changed variable name 'Loan LoAn' to 'Loan loan', 'cUrReNt_lOaNs' to 'currentLoans'
+    sb.append(LoAn).append("\n"); // changed variable name 'LoAn' to 'Loan'
 		}		  
 		return sb.toString();
 	}
