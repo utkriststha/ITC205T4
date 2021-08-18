@@ -23,7 +23,7 @@ public class Book implements Serializable {
 	}
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder StringBuilder = new StringBuilder();//giving variable meaningful name
 		sb.append("Book: ").append(id).append("\n")// Changed 'iD' to 'id'
 		  .append("  Title:  ").append(title).append("\n")// Changed 'tItLe' to 'title'
 		  .append("  Author: ").append(author).append("\n")//Changed 'AuThOr' to 'author'
@@ -53,7 +53,7 @@ public class Book implements Serializable {
 	}
 
 	
-	public boolean isDAMAGED() {//Changed 'iS_DaMaGeD' to 'isDAMAGED'
+	public boolean isDamaged() {//Changed 'iS_DaMaGeD' to 'isDamaged'
 		return state == state.DAMAGED;//Changed 'StAtE' to 'state'
 	}
 
@@ -69,7 +69,7 @@ public class Book implements Serializable {
 	}
 
 
-	public void return(boolean DAMAGED) {//Changed 'ReTuRn' to 'return' and ' DaMaGeD' to 'DAMAGED'
+	public void returnBook(boolean DAMAGED) {//Changed 'ReTuRn' to 'returnBook', adding identifier and ' DaMaGeD' to 'DAMAGED'
 		if (state.equals(state.ON_LOAN)) //Changed 'StAtE' to 'state' and 'sTaTe' to 'state'
 			if (DAMAGED) // Changed 'DaMaGeD' to 'DAMAGED'
 				state = state.DAMAGED;//Changed 'StAtE' to 'state' and 'sTaTe' to 'state'
