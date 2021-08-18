@@ -49,7 +49,7 @@ public class Library implements Serializable {
 	}
 
 	
-	public static synchronized Library GetInstance() { // Changes 'GeTiNsTaNcE()' to 'GetInstance()'		
+	public static synchronized Library getInstance() { // Changes 'GeTiNsTaNcE()' to 'getInstance()'		
 		if (self == null) { //Changed 'SeLf' to 'self'
 			Path path = Paths.get(LIBRARY_FILE); //Changed 'lIbRaRyFiLe' to 'LIBRARY_FILE' & 'PATH' to 'path'		
 			if (Files.exists(path)) { //Changed 'PATH' to 'path'	
@@ -215,7 +215,7 @@ public class Library implements Serializable {
 		double overDueFine = calculateOverDueFine(currentLoan); //Changed 'CaLcUlAtE_OvEr_DuE_FiNe' to 'calculateOverDueFine' & 'cUrReNt_LoAn' to 'currentLoan' & 'oVeR_DuE_FiNe' to 'overDueFine'
 		member.addFine(overDueFine); //Changed'oVeR_DuE_FiNe' to 'overDueFine' & 'AdD_FiNe' to 'addFine' & 'mEmBeR' to 'member'
 		
-		member.dIsChArGeLoAn(currentLoan);//Changed 'cUrReNt_LoAn' to 'currentLoan' & 'cUrReNt_LoAn' to 'currentLoan' & 'dIsChArGeLoAn' & 'mEmBeR' to 'member'
+		member.dischargeLoan(currentLoan);//Changed 'cUrReNt_LoAn' to 'currentLoan' & 'cUrReNt_LoAn' to 'currentLoan' & 'dIsChArGeLoAn' to 'dischargeLoan' & 'mEmBeR' to 'member'
 		book.ReTuRn(isDamaged); //Changed 'bOoK' to 'book' & 'ReTuRn' to 'return' & 'iS_dAmAgEd' to 'isDamaged'
 		if (isDamaged) { //Changed 'iS_dAmAgEd' to 'isDamaged'
 			member.addFine(damageFee); //Changed 'mEmBeR' to 'member' & 'AdD_FiNe' to 'addFine' 
