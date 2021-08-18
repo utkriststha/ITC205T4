@@ -60,16 +60,16 @@ public class Loan implements Serializable {
 	return stringBuilder.toString();								// Changed variable name 'sb' to 'stringBuilder'.
 	}
 
-    public Member GeT_MeMbEr() {
-	return MeMbEr;
+    public Member getMember() {			// Changed method name 'GeT_MeMbEr' to 'getMember'.
+	return member;				// Changed variable name 'MeMbEr' to 'member'.
 	}
 
-    public Book GeT_BoOk() {
-	return BoOk;
+    public Book getBook() {			// Changed method name 'GeT_BoOk' to 'getBook'.
+	return book;				// Changed variable name 'BoOk' to 'book'.
 	}
 
-    public void DiScHaRgE() {
-	StAtE = lOaN_sTaTe.DISCHARGED;		
+    public void discharge() {			// Changed method name 'DiScHaRgE' to 'discharge'.
+	state = LoanState.DISCHARGED;		// Changed variable name 'StAtE' to 'state' and 'lOaN_sTaTe' to 'LoanState'.
 	}
 
 }
