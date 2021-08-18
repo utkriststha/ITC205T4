@@ -130,9 +130,9 @@ public class Library implements Serializable {
 	}
 
 	
-	public Book addBook(String a, String t, String c) {// Changed 'aDd_BoOk' to 'addBook'
-		Book book = new Book(a, t, c, getNextBookId()); // Changed 'gEt_NeXt_BoOk_Id' to 'getNextBookId' & 'b' to 'book'
-		catalog.put(b.getId(), b); //Changed 'CaTaLoG' to 'catalog' & 'gEtId' to 'getId'
+	public Book addBook(String author, String title, String callNo) {// Changed 'aDd_BoOk' to 'addBook' & 'a' to 'author' & 't' to 'title' & 'c' to 'callNo'
+		Book book = new Book(author, title, callNo, getNextBookId()); // Changed 'gEt_NeXt_BoOk_Id' to 'getNextBookId' & 'b' to 'book'
+		catalog.put(book.getId(), book); //Changed 'CaTaLoG' to 'catalog' & 'gEtId' to 'getId'  & 'b' to 'book'
 		return book;
 	}
 
@@ -216,7 +216,7 @@ public class Library implements Serializable {
 		member.addFine(overDueFine); //Changed'oVeR_DuE_FiNe' to 'overDueFine' & 'AdD_FiNe' to 'addFine' & 'mEmBeR' to 'member'
 		
 		member.dischargeLoan(currentLoan);//Changed 'cUrReNt_LoAn' to 'currentLoan' & 'cUrReNt_LoAn' to 'currentLoan' & 'dIsChArGeLoAn' to 'dischargeLoan' & 'mEmBeR' to 'member'
-		book.ReTuRn(isDamaged); //Changed 'bOoK' to 'book' & 'ReTuRn' to 'return' & 'iS_dAmAgEd' to 'isDamaged'
+		book.returnBook(isDamaged); //Changed 'bOoK' to 'book' & 'ReTuRn' to 'returnBook' & 'iS_dAmAgEd' to 'isDamaged'
 		if (isDamaged) { //Changed 'iS_dAmAgEd' to 'isDamaged'
 			member.addFine(damageFee); //Changed 'mEmBeR' to 'member' & 'AdD_FiNe' to 'addFine' 
 			damagedBook.put(book.getId(), book); //Changed 'bOoK' to 'book' & 'DaMaGeD_BoOkS' to 'damageBooks' & 'gEtId' to 'getId'
