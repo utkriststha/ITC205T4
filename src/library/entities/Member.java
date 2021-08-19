@@ -46,27 +46,27 @@ public class Member implements Serializable {
 	}
 
 	
-	public int getId() { //changed method name 'GeT_ID' to 'getId'
+    public int getId() { //changed method name 'GeT_ID' to 'getId'
 		return memberId; // changed variable name 'MeMbEr_Id' to 'memberId'
 	}
 
 	
-	public List<Loan> getLoans() { // changed method name 'GeT_LoAnS' to 'getLoans'
+    public List<Loan> getLoans() { // changed method name 'GeT_LoAnS' to 'getLoans'
 		return new ArrayList<Loan>(currentLoans.values()); //changed variable name 'cUrReNt_lOaNs' to 'currentLoans'
 	}
 
 	
-	public int getNumberOfCurrentLoans() { // changed method name 'gEt_nUmBeR_Of_CuRrEnT_LoAnS' to 'getNumberOfCurrentLoans'
+    public int getNumberOfCurrentLoans() { // changed method name 'gEt_nUmBeR_Of_CuRrEnT_LoAnS' to 'getNumberOfCurrentLoans'
 		return currentLoans.size(); // changed variable name 'cUrReNt_lOaNs' to 'currentLoans'
 	}
 
 	
-	public double finesOwed() { // changed method name 'FiNeS_OwEd' to 'finesOwed'
+    public double finesOwed() { // changed method name 'FiNeS_OwEd' to 'finesOwed'
 		return finesOwing; // changed variable name 'FiNeS_OwInG' to 'finesOwing'
 	}
 
 	
-	public void TaKe_OuT_LoAn(Loan loan) { // changed method name 'TaKe_OuT_LoAn' to 'takeOutLoan" , 'lOaN' to 'loan'
+    public void TaKe_OuT_LoAn(Loan loan) { // changed method name 'TaKe_OuT_LoAn' to 'takeOutLoan" , 'lOaN' to 'loan'
 		if (!currentLoans.containsKey(loan.getID())) // changed variable name 'cUrReNt_lOaNs' to 'currentLoans', 'lOaN.GeT_Id' to 'loan.getID'
 			currentLoans.put(loan.getId(), loan); // changed variable name 'cUrReNt_lOaNs' to 'currentLoans', 'lOaN.GeT_Id' to 'loan.getId' , 'lOaN' to 'loan'
 		
@@ -76,21 +76,21 @@ public class Member implements Serializable {
 	}
 
 	
-	public String GeT_LaSt_NaMe() {
+    public String GeT_LaSt_NaMe() {
 		return LaSt_NaMe;
 	}
 
 	
-	public String GeT_FiRsT_NaMe() {
+    public String GeT_FiRsT_NaMe() {
 		return FiRsT_NaMe;
 	}
 
 
-	public void AdD_FiNe(double fine) {
+    public void AdD_FiNe(double fine) {
 		FiNeS_OwInG += fine;
 	}
 	
-	public double PaY_FiNe(double AmOuNt) {
+    public double PaY_FiNe(double AmOuNt) {
 		if (AmOuNt < 0) 
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		
@@ -106,7 +106,7 @@ public class Member implements Serializable {
 	}
 
 
-	public void dIsChArGeLoAn(Loan LoAn) {
+    public void dIsChArGeLoAn(Loan LoAn) {
 		if (cUrReNt_lOaNs.containsKey(LoAn.GeT_Id())) 
 			cUrReNt_lOaNs.remove(LoAn.GeT_Id());
 		
