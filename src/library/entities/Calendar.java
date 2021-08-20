@@ -23,25 +23,25 @@ public class Calendar {
 	calendar.add(java.util.Calendar.DATE, days);	// Changed variable name 'cAlEnDaR' to 'calendar'.	
     }
 	
-    public synchronized void SeT_DaTe(Date DaTe) {
+    public synchronized void setDate(Date date) {			// Changed method name 'SeT_DaTe' to 'setDate' and 'DaTe' to 'date'.
 	try {
-	    cAlEnDaR.setTime(DaTe);
-	    cAlEnDaR.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	    cAlEnDaR.set(java.util.Calendar.MINUTE, 0);  
-	    cAlEnDaR.set(java.util.Calendar.SECOND, 0);  
-	    cAlEnDaR.set(java.util.Calendar.MILLISECOND, 0);
+	    calendar.setTime(date);					// Changed variable name 'cAlEnDaR' to 'calendar' and 'DaTe' to 'date'.
+	    calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  		// Changed variable name 'cAlEnDaR' to 'calendar'.
+	    calendar.set(java.util.Calendar.MINUTE, 0);  		// Changed variable name 'cAlEnDaR' to 'calendar'.
+	    calendar.set(java.util.Calendar.SECOND, 0);  		// Changed variable name 'cAlEnDaR' to 'calendar'.
+	    calendar.set(java.util.Calendar.MILLISECOND, 0);		// Changed variable name 'cAlEnDaR' to 'calendar'.
 	}
-		catch (Exception e) {
-			throw new RuntimeException(e);
+		catch (Exception exception) {				// Changed variable name 'e' to 'exception'.
+			throw new RuntimeException(exception);		// Changed variable name 'e' to 'exception'.
 		}	
 	}
-    public synchronized Date gEt_DaTe() {
+    public synchronized Date getDate() {				// Changed method name 'gEt_DaTe' to 'getDate'.
         try {	
-	    cAlEnDaR.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	    cAlEnDaR.set(java.util.Calendar.MINUTE, 0);  
-	    cAlEnDaR.set(java.util.Calendar.SECOND, 0);  
-            cAlEnDaR.set(java.util.Calendar.MILLISECOND, 0);	
-	    return cAlEnDaR.getTime();
+	    calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  		// Changed variable name 'cAlEnDaR' to 'calendar'.
+	    calendar.set(java.util.Calendar.MINUTE, 0);  		// Changed variable name 'cAlEnDaR' to 'calendar'.
+	    calendar.set(java.util.Calendar.SECOND, 0);  		// Changed variable name 'cAlEnDaR' to 'calendar'.
+            calendar.set(java.util.Calendar.MILLISECOND, 0);		// Changed variable name 'cAlEnDaR' to 'calendar'.
+	    return calendar.getTime();					// Changed variable name 'cAlEnDaR' to 'calendar'.
 	}
 	catch (Exception e) {
             throw new RuntimeException(e);
