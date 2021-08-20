@@ -76,39 +76,39 @@ public class Member implements Serializable {
 	}
 
 	
-    public String GeT_LaSt_NaMe() {
-		return LaSt_NaMe;
+    public String (getLastName) { // changed method name 'GeT_LaSt_NaMe' to 'getLastName'
+		return LaSt_NaMe; // changed variable name 'LaSt_NaMe' to 'lastName'
 	}
 
 	
-    public String GeT_FiRsT_NaMe() {
-		return FiRsT_NaMe;
+    public String getFirstName() { // changed method name 'GeT_FiRsT_NaMe' to 'getFirstName'
+		return firstName; // changed variable name 'FiRsT_NaMe' to 'firstName'
 	}
 
 
-    public void AdD_FiNe(double fine) {
-		FiNeS_OwInG += fine;
+    public void addFine(double fine) {  // changed method name 'AdD_FiNe' to 'addFine'
+		finesOwing += fine; // chnaged variable name 'FiNeS_OwInG' to 'finesOwing'
 	}
 	
-    public double PaY_FiNe(double AmOuNt) {
+    public double payFine(double AmOuNt) { // chnaged method name 'PaY_FiNe' to 'payFine'
 		if (AmOuNt < 0) 
-			throw new RuntimeException("Member.payFine: amount must be positive");
+			throw new RuntimeException("member.payFine: amount must be positive"); 
 		
 		double change = 0;
-		if (AmOuNt > FiNeS_OwInG) {
-			change = AmOuNt - FiNeS_OwInG;
-			FiNeS_OwInG = 0;
+		if (AmOuNt > finesOwing) { // changed variable name 'FiNeS_OwInG' to 'finesOwing'
+			change = AmOuNt - finesOwing; // changed variable name 'FiNeS_OwInG' to 'finesOwing'
+			finesOwing = 0; // changed variable name 'FiNeS_OwInG' to 'finesOwing'
 		}
 		else 
-			FiNeS_OwInG -= AmOuNt;
+			finesOwing -= Amount; // changed variable name 'FiNeS_OwInG' to 'finesOwing', 'AmOuNt' to 'Amount'
 		
 		return change;
 	}
 
 
-    public void dIsChArGeLoAn(Loan LoAn) {
-		if (cUrReNt_lOaNs.containsKey(LoAn.GeT_Id())) 
-			cUrReNt_lOaNs.remove(LoAn.GeT_Id());
+    public void dischargeLoan(Loan loan) { // changed method name 'dIsChArGeLoAn' to 'dischargeLoan', 'LoAn' to 'loan'
+		if (cUrReNt_lOaNs.containsKey(loan.getId())) // changed variable name 'cUrReNt_lOaNs' to ' currentLoans' , 'LoAn.GeT_Id' to 'loan.getId'
+			currentLoans.remove(loan.getId()); // changed variable name 'cUrReNt_lOaNs' to ' currentLoans' , 'LoAn.GeT_Id' to 'loan.getId'
 		
 		else 
 			throw new RuntimeException("No such loan held by member");
