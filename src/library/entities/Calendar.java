@@ -43,23 +43,23 @@ public class Calendar {
             calendar.set(java.util.Calendar.MILLISECOND, 0);		// Changed variable name 'cAlEnDaR' to 'calendar'.
 	    return calendar.getTime();					// Changed variable name 'cAlEnDaR' to 'calendar'.
 	}
-	catch (Exception e) {
-            throw new RuntimeException(e);
+	catch (Exception exception) {					// Changed variable name 'e' to 'exception'.
+            throw new RuntimeException(exception);			// Changed variable name 'e' to 'exception'.
 	}	
     }
 
-    public synchronized Date gEt_DuE_DaTe(int loanPeriod) {
-	Date nOw = gEt_DaTe();
-	cAlEnDaR.add(java.util.Calendar.DATE, loanPeriod);
-	Date dUeDaTe = cAlEnDaR.getTime();
-	cAlEnDaR.setTime(nOw);
-	return dUeDaTe;
+    public synchronized Date getDueDate(int loanPeriod) {		// Changed method name 'gEt_DuE_DaTe' to 'getDueDate'.
+	Date now = getDate();						// Changed variable name 'nOw' to 'now' and 'gEt_DaTe' to 'getDate'.
+	calendar.add(java.util.Calendar.DATE, loanPeriod);		// Changed variable name 'cAlEnDaR' to 'calendar'.
+	Date dueDate = calendar.getTime();				// Changed variable name 'dUeDaTe' to 'dueDate' and 'cAlEnDaR' to 'calendar'.
+	calendar.setTime(now);						// Changed variable name 'nOw' to 'now' and 'cAlEnDaR' to 'calendar'.
+	return dueDate;							// Changed variable name 'dUeDaTe' to 'dueDate'.
     }
 	
-    public synchronized long GeT_DaYs_DiFfErEnCe(Date targetDate) {
-	long Diff_Millis = gEt_DaTe().getTime() - targetDate.getTime();
-	long Diff_Days = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS);
-	return Diff_Days;
+    public synchronized long getDaysDifference(Date targetDate) {			// Changed method name 'GeT_DaYs_DiFfErEnCe' to 'getDaysDifference'.
+	long diffMillis = getDate().getTime() - targetDate.getTime();			// Changed variable name 'Diff_Millis' to 'diffMillis' and 'gEt_DaTe' to 'getDate'.
+	long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);	// Changed variable name 'Diff_Days' to 'diffDays' and 'Diff_Millis' to 'diffMillis'.
+	return diffDays;								// Changed variable name 'Diff_Days' to 'diffDays'.
     }
 
 }
