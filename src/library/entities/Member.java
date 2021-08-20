@@ -30,7 +30,7 @@ public class Member implements Serializable {
 
     //Indentation was reduced from 8 spaces to 4 spaces
     public String toString() {
-    stringBuilder sb = new stringBuilder(); //changed variable name 'StringBuilder' to 'stringbuilder'
+    stringBuilder stringBuilder = new stringBuilder(); //changed variable name 'StringBuilder' to 'stringbuilder'
       .append("Member:  ").append(memberId).append("\n") // chanaged variable name 'MeMbEr_Id' to 'memberId'
       .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n") // changed variable name 'LaSt_NaMe' to 'lastName', 'FiRsT_NaMe' to 'firstName'
       .append("  Email: ").append(emailAddress).append("\n") // changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
@@ -40,9 +40,9 @@ public class Member implements Serializable {
       .append("\n");
 		
     for (Loan loan : currentLoans.values()) { // changed variable name 'Loan LoAn' to 'Loan loan', 'cUrReNt_lOaNs' to 'currentLoans'
-    sb.append(Loan).append("\n"); // changed variable name 'LoAn' to 'Loan'
+    stringBuilder.append(Loan).append("\n"); // changed variable name 'LoAn' to 'Loan'
 		}		  
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 	
@@ -76,8 +76,8 @@ public class Member implements Serializable {
 	}
 
 	
-    public String (getLastName) { // changed method name 'GeT_LaSt_NaMe' to 'getLastName'
-		return LaSt_NaMe; // changed variable name 'LaSt_NaMe' to 'lastName'
+    public String (getlastName) { // changed method name 'GeT_LaSt_NaMe' to 'getlastName'
+		return LastName; // changed variable name 'LaSt_NaMe' to 'lastName'
 	}
 
 	
@@ -90,13 +90,13 @@ public class Member implements Serializable {
 		finesOwing += fine; // chnaged variable name 'FiNeS_OwInG' to 'finesOwing'
 	}
 	
-    public double payFine(double AmOuNt) { // chnaged method name 'PaY_FiNe' to 'payFine'
-		if (AmOuNt < 0) 
+    public double payFine(double Amount) { // chnaged method name 'PaY_FiNe' to 'payFine', 'AmOuNt' to 'Amount'
+		if (AmOuNt < 0) // changed variable name 'AmOuNt' to 'Amount'
 			throw new RuntimeException("member.payFine: amount must be positive"); 
 		
 		double change = 0;
-		if (AmOuNt > finesOwing) { // changed variable name 'FiNeS_OwInG' to 'finesOwing'
-			change = AmOuNt - finesOwing; // changed variable name 'FiNeS_OwInG' to 'finesOwing'
+		if (AmOuNt > finesOwing) { // changed variable name 'AmOuNt' to 'Amount' ,'FiNeS_OwInG' to 'finesOwing', 
+			change = Amount - finesOwing; // changed variable name 'FiNeS_OwInG' to 'finesOwing', 'AmOuNt' to 'Amount'
 			finesOwing = 0; // changed variable name 'FiNeS_OwInG' to 'finesOwing'
 		}
 		else 
@@ -107,7 +107,7 @@ public class Member implements Serializable {
 
 
     public void dischargeLoan(Loan loan) { // changed method name 'dIsChArGeLoAn' to 'dischargeLoan', 'LoAn' to 'loan'
-		if (cUrReNt_lOaNs.containsKey(loan.getId())) // changed variable name 'cUrReNt_lOaNs' to ' currentLoans' , 'LoAn.GeT_Id' to 'loan.getId'
+		if (currentLoans.containsKey(loan.getId())) // changed variable name 'cUrReNt_lOaNs' to ' currentLoans' , 'LoAn.GeT_Id' to 'loan.getId'
 			currentLoans.remove(loan.getId()); // changed variable name 'cUrReNt_lOaNs' to ' currentLoans' , 'LoAn.GeT_Id' to 'loan.getId'
 		
 		else 
