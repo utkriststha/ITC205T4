@@ -23,7 +23,7 @@ public class Library implements Serializable {
 	private static final double FINE_PER_DAY = 1.0; //Changed 'FiNe_PeR_DaY' to 'FINE_PER_DAY'
 	private static final double MAX_FINES_OWED = 1.0; //Changed 'maxFinesOwed' to 'MAX_FINES_OWED'
 	private static final double DAMAGE_FEE = 2.0; //Changed 'damageFee' to 'DAMAGE_FEE'
-	
+    
 	private static Library self; //Changed 'SeLf' to 'self'
 	private int bookId; //Changed 'bOoK_Id' to 'bookId'
 	private int memberId; //Changed 'mEmBeR_Id' to 'memberId'
