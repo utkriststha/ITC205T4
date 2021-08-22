@@ -2,17 +2,17 @@ package library.payfine;
 import library.entities.Library;
 import library.entities.Member;
 
-public class pAY_fINE_cONTROL {
+public class payFineControl { // changed method name 'pAY_fINE_cONTROL' to 'payFineControl'
 	
-	private PayFineUI Ui;
-	private enum cOnTrOl_sTaTe { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-	private cOnTrOl_sTaTe StAtE;
+    private payFineUi Ui; // changed variable name 'PayFineUI' to 'payFineUi'
+    private enum controlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; // changed variable name 'cOnTrOl_sTaTe' to 'controlState'
+    private controlState State; // changed variable name 'cOnTrOl_sTaTe' to 'controlState' , 'StAtE' to ' State'
 	
-	private Library LiBrArY;
-	private Member MeMbEr;
+    private Library libary; // changed variable name 'LiBrArY' to 'libary'
+    private Member member; // changed variable name 'MeMbEr' to 'member'
 
 
-	public pAY_fINE_cONTROL() {
+	public pAY_fINE_cONTROL() { 
 		this.LiBrArY = Library.GeTiNsTaNcE();
 		StAtE = cOnTrOl_sTaTe.INITIALISED;
 	}
