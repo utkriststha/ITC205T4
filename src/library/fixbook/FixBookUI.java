@@ -19,22 +19,22 @@ public class FixBookUI {
     }
 
 
-    public void SeT_StAtE(uI_sTaTe state) {
-	this.StAtE = state;
+    public void setState(uI_sTaTe state) {		// Change method name 'SeT_StAtE' to 'setState' and 'uI_sTaTe' to 'UIState'.
+	this.state = state;				// Change variable name 'StAtE' to 'state'.
     }
 
 	
-    public void RuN() {
-	OuTpUt("Fix Book Use Case UI\n");
+    public void run() {					// Change method name 'RuN' to 'run'.
+	output("Fix Book Use Case UI\n");		// Change method name 'OuTpUt' to 'output'.
 		
 	while (true) {
 			
-	    switch (StAtE) {
+	    switch (state) {				// Change variable name 'StAtE' to 'state'.
 			
 	    case READY:
-		String BoOk_EnTrY_StRiNg = iNpUt("Scan Book (<enter> completes): ");
-		if (BoOk_EnTrY_StRiNg.length() == 0) 
-		    CoNtRoL.SCannING_COMplete();
+		String bookEntryString = input("Scan Book (<enter> completes): ");	// Change variable name 'BoOk_EnTrY_StRiNg' to 'bookEntryString' and 'iNpUt' to 'input'.
+		if (bookEntryString.length() == 0) 					// Change variable name 'BoOk_EnTrY_StRiNg' to 'bookEntryString'.
+		    control.scanningComplete();						// Change variable name 'CoNtRoL' to 'control' and 'SCannING_COMplete' to 'scanningComplete'.
 				
 		else {
 		    try {
