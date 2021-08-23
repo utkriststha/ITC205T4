@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class FixBookUI {
     // Changed indentation from 8 spaces from 4 spaces
-    public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };	// Change method name 'uI_sTaTe' to 'UI_STATE'.
+    public static enum UIState { INITIALISED, READY, FIXING, COMPLETED };	// Change method name 'uI_sTaTe' to 'UIState'.
 
-    private FixBookControl CoNtRoL;		// Change class name 'fIX_bOOK_cONTROL' to 'FixBookControl' and 'CoNtRoL' to 'control'.
+    private FixBookControl control;		// Change class name 'fIX_bOOK_cONTROL' to 'FixBookControl' and 'CoNtRoL' to 'control'.
     private Scanner input;			// Change variable name 'InPuT' to 'input'.
     private UIState state;			// Change class name 'uI_sTaTe' to 'UIState' and 'StAtE' to 'state'.
 
