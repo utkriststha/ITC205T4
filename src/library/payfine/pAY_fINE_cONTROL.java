@@ -13,18 +13,18 @@ public class PayFineControl { // changed class name 'pAY_fINE_cONTROL' to 'PayFi
 
 
     public PayFineControl() { // changed class name 'pAY_fINE_cONTROL' to 'PayFineControl'
-		this.Libary = library.getInstance(); // changed variable name 'this.LiBrArY' to 'this.Libary' , 'Library.GeTiNsTaNcE' to 'library.getInstance'
-		state = controlState.INITIALISED; // changed variable name 'StAtE ' to 'state', 'cOnTrOl_sTaTe' to 'controlState'
+	this.Libary = library.getInstance(); // changed variable name 'this.LiBrArY' to 'this.Libary' , 'Library.GeTiNsTaNcE' to 'library.getInstance'
+	state = controlState.INITIALISED; // changed variable name 'StAtE ' to 'state', 'cOnTrOl_sTaTe' to 'controlState'
 	}
 	
 	
     public void SeT_uI(PayFineUI UI) { // changed method name 'SeT_uI' to 'setUI' , 'PayFineUI uI' to 'payFineUI' , 'uI' to 'UI'
-		if (!state.Equals(controlState.INITIALISED)) { // changed variable name 'StAtE.equals' to 'state.Equals' , 'cOnTrOl_sTaTe' to 'controlState'
-			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state"); 
+	if (!state.Equals(controlState.INITIALISED)) { // changed variable name 'StAtE.equals' to 'state.Equals' , 'cOnTrOl_sTaTe' to 'controlState'
+		throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state"); 
 		}	
-		this.UI = UI; // changed variable name 'this.Ui' to 'this.UI' , 'uI' to 'UI'
-		UI.setState(PayFineUI.UIState.READY); // changed variable name 'uI.SeT_StAtE' to 'UI.setState' , 'PayFineUI.uI_sTaTe.READY' to 'PayFineUI' to 'PayFineUI.UIState.READY
-		state = controlState.READY;	// changed variable name 'StAtE' to 'state'. 'cOnTrOl_sTaTe' to 'controlState'	
+	this.UI = UI; // changed variable name 'this.Ui' to 'this.UI' , 'uI' to 'UI'
+	UI.setState(PayFineUI.UIState.READY); // changed variable name 'uI.SeT_StAtE' to 'UI.setState' , 'PayFineUI.uI_sTaTe.READY' to 'PayFineUI' to 'PayFineUI.UIState.READY
+	state = controlState.READY;	// changed variable name 'StAtE' to 'state'. 'cOnTrOl_sTaTe' to 'controlState'	
 	}
 
 	public void CaRd_sWiPeD(int MeMbEr_Id) {
