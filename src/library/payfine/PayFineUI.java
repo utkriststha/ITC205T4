@@ -2,21 +2,21 @@ package library.payfine;
 import java.util.Scanner;
 
 
-public class PayFineUI {
+public class PayFineUI { 
 
+    // Changed indentation from 8 spaces from 4 spaces
+    public static enum UIState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; // changed method name 'uI_sTaTe' to 'UIState'
 
-	public static enum uI_sTaTe { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-
-	private pAY_fINE_cONTROL CoNtRoL;
-	private Scanner input;
-	private uI_sTaTe StAtE;
+    private PayFineControl control; //changed class name 'pAY_fINE_cONTROL' to 'PayFineControl' , 'CoNtRoL' to 'control'
+    private Scanner input;
+    private uI_sTaTe StAtE; //changed class name 'uI_sTaTe' to 'UIState' , 'StAtE' 'state'
 
 	
-	public PayFineUI(pAY_fINE_cONTROL control) {
-		this.CoNtRoL = control;
-		input = new Scanner(System.in);
-		StAtE = uI_sTaTe.INITIALISED;
-		control.SeT_uI(this);
+    public PayFineUI(PayFineControl control) { //changed class name 'pAY_fINE_cONTROL' to 'PayFineControl'
+	this.control = control; // changed variable name 'this.CoNtRoL' to 'this.control'
+	input = new Scanner(System.in);  
+	state = UIState.INITIALISED; // changed class name 'uI_sTaTe' to 'UIState' and 'StAtE' to 'state'
+	control.setUI(this); // changed method name 'control.SeT_uI' to 'control.setUI'
 	}
 	
 	
