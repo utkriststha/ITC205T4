@@ -30,7 +30,7 @@ public class Member implements Serializable {
 
     //Indentation was reduced from 8 spaces to 4 spaces
     public String toString() {
-    stringBuilder stringBuilder = new stringBuilder(); //changed variable name 'StringBuilder' to 'stringbuilder'
+    StringBuilder stringBuilder = new StringBuilder(); //changed variable name 'StringBuilder' to 'stringBuilder'
       .append("Member:  ").append(memberId).append("\n") // chanaged variable name 'MeMbEr_Id' to 'memberId'
       .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n") // changed variable name 'LaSt_NaMe' to 'lastName', 'FiRsT_NaMe' to 'firstName'
       .append("  Email: ").append(emailAddress).append("\n") // changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'
@@ -66,7 +66,7 @@ public class Member implements Serializable {
 	}
 
 	
-    public void TaKe_OuT_LoAn(Loan loan) { // changed method name 'TaKe_OuT_LoAn' to 'takeOutLoan" , 'lOaN' to 'loan'
+    public void takeOutLoan(Loan loan) { // changed method name 'TaKe_OuT_LoAn' to 'takeOutLoan" , 'lOaN' to 'loan'
 		if (!currentLoans.containsKey(loan.getID())) // changed variable name 'cUrReNt_lOaNs' to 'currentLoans', 'lOaN.GeT_Id' to 'loan.getID'
 			currentLoans.put(loan.getId(), loan); // changed variable name 'cUrReNt_lOaNs' to 'currentLoans', 'lOaN.GeT_Id' to 'loan.getId' , 'lOaN' to 'loan'
 		
@@ -76,8 +76,8 @@ public class Member implements Serializable {
 	}
 
 	
-    public String (getlastName) { // changed method name 'GeT_LaSt_NaMe' to 'getlastName'
-		return LastName; // changed variable name 'LaSt_NaMe' to 'lastName'
+    public String (getLastName) { // changed method name 'GeT_LaSt_NaMe' to 'getLastName'
+		return lastName; // changed variable name 'LaSt_NaMe' to 'lastName'
 	}
 
 	
@@ -90,17 +90,17 @@ public class Member implements Serializable {
 		finesOwing += fine; // chnaged variable name 'FiNeS_OwInG' to 'finesOwing'
 	}
 	
-    public double payFine(double Amount) { // chnaged method name 'PaY_FiNe' to 'payFine', 'AmOuNt' to 'Amount'
-		if (AmOuNt < 0) // changed variable name 'AmOuNt' to 'Amount'
+    public double payFine(double amount) { // chnaged method name 'PaY_FiNe' to 'payFine', 'AmOuNt' to 'amount'
+		if (amount < 0) // changed variable name 'AmOuNt' to 'Amount'
 			throw new RuntimeException("member.payFine: amount must be positive"); 
 		
 		double change = 0;
-		if (AmOuNt > finesOwing) { // changed variable name 'AmOuNt' to 'Amount' ,'FiNeS_OwInG' to 'finesOwing', 
-			change = Amount - finesOwing; // changed variable name 'FiNeS_OwInG' to 'finesOwing', 'AmOuNt' to 'Amount'
+		if (amount > finesOwing) { // changed variable name 'AmOuNt' to 'amount' ,'FiNeS_OwInG' to 'finesOwing', 
+			change = amount - finesOwing; // changed variable name 'FiNeS_OwInG' to 'finesOwing', 'AmOuNt' to 'amount'
 			finesOwing = 0; // changed variable name 'FiNeS_OwInG' to 'finesOwing'
 		}
 		else 
-			finesOwing -= Amount; // changed variable name 'FiNeS_OwInG' to 'finesOwing', 'AmOuNt' to 'Amount'
+			finesOwing -= amount; // changed variable name 'FiNeS_OwInG' to 'finesOwing', 'AmOuNt' to 'amount'
 		
 		return change;
 	}
