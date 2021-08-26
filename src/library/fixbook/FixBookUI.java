@@ -19,40 +19,41 @@ public class FixBookUI {
     }
 
 
-    public void SeT_StAtE(uI_sTaTe state) {
-	this.StAtE = state;
+    public void setState(uI_sTaTe state) {		// Change method name 'SeT_StAtE' to 'setState' and 'uI_sTaTe' to 'UIState'.
+	this.state = state;				// Change variable name 'StAtE' to 'state'.
     }
 
 	
-    public void RuN() {
-	OuTpUt("Fix Book Use Case UI\n");
+    public void run() {					// Change method name 'RuN' to 'run'.
+	output("Fix Book Use Case UI\n");		// Change method name 'OuTpUt' to 'output'.
 		
 	while (true) {
 			
-	    switch (StAtE) {
+	    switch (state) {				// Change variable name 'StAtE' to 'state'.
 			
 	    case READY:
-		String BoOk_EnTrY_StRiNg = iNpUt("Scan Book (<enter> completes): ");
-		if (BoOk_EnTrY_StRiNg.length() == 0) 
-		    CoNtRoL.SCannING_COMplete();
+		String bookEntryString = input("Scan Book (<enter> completes): ");	// Change variable name 'BoOk_EnTrY_StRiNg' to 'bookEntryString' and 'iNpUt' to 'input'.
+		if (bookEntryString.length() == 0) 					// Change variable name 'BoOk_EnTrY_StRiNg' to 'bookEntryString'.
+		    control.scanningComplete();						// Change variable name 'CoNtRoL' to 'control' and 'SCannING_COMplete' to 'scanningComplete'.
 				
 		else {
 		    try {
-		        int BoOk_Id = Integer.valueOf(BoOk_EnTrY_StRiNg).intValue();
-			CoNtRoL.BoOk_ScAnNeD(BoOk_Id);
+		        int bookId = Integer.valueOf(bookEntryString).intValue();	// Change variable name 'BoOk_Id' to 'bookId' and 'BoOk_EnTrY_StRiNg' to 'bookEntryString'. 
+			control.bookScanned(bookId);					/** Change variable name 'CoNtRoL' to 'control', 'BoOk_ScAnNeD' to 'bookScanned', 
+			    								 and 'BoOk_Id' to'bookId'. **/
 		    }
 		    catch (NumberFormatException e) {
-			OuTpUt("Invalid bookId");
+			output("Invalid bookId");					// Change variable name 'OuTpUt' to 'output'.
 		    }
 	        }
 		break;	
 				
 	    case FIXING:
-		String AnS = iNpUt("Fix Book? (Y/N) : ");
-		boolean FiX = false;
-		if (AnS.toUpperCase().equals("Y")) 
-		    FiX = true;
-		    CoNtRoL.FiX_BoOk(FiX);
+		String answer = input("Fix Book? (Y/N) : ");			// Change variable name 'AnS' to 'answer' and 'iNpUt' to 'input'.
+		boolean fix = false;						// Change variable name 'FiX' to 'fix'.
+		if (answer.toUpperCase().equals("Y")) 				// Change variable name 'AnS' to 'answer'
+		    FiX = true;							// Change variable name 'FiX' to 'fix'.
+		    CoNtRoL.FiX_BoOk(fix);
 		    break;
 								
 		case COMPLETED:
