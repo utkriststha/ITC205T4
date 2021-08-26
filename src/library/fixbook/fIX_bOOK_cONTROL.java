@@ -34,17 +34,17 @@ public class FixBookControl { 	// Changed class name 'fIX_bOOK_cONTROL' to 'FixB
 			
 	currentBook = library.getBook(bookId);		/** Changed variable name 'CuRrEnT_BoOk' to 'currentBook', 'LiBrArY' to 'library', 'gEt_BoOk' to 'getBook', 
 							    and 'BoOkId' to 'bookId'.**/
-	if (CuRrEnT_BoOk == null) {
-	    Ui.dIsPlAy("Invalid bookId");
+	if (currentBook == null) {			// Changed variable name 'CuRrEnT_BoOk' to 'currentBook'.
+	    ui.display("Invalid bookId");		// Changed variable name 'Ui' to 'ui'and 'dIsPlAy' to 'display'.
 	    return;
 	}
-	if (!CuRrEnT_BoOk.iS_DaMaGeD()) {
-	    Ui.dIsPlAy("Book has not been damaged");
+	if (!currentBook.isDamaged()) {			// Changed variable name 'CuRrEnT_BoOk' to 'currentBook'and 'iS_DaMaGeD' to 'isDamaged'.
+	    ui.display("Book has not been damaged");	// Changed variable name 'Ui' to 'ui'and 'dIsPlAy' to 'display'.
 	    return;
 	}
-		Ui.dIsPlAy(CuRrEnT_BoOk.toString());
-		Ui.SeT_StAtE(FixBookUI.uI_sTaTe.FIXING);
-		StAtE = CoNtRoL_StAtE.FIXING;		
+		ui.display(currentBook.toString());		// Changed variable name 'Ui.dIsPlAy' to 'ui.display'and 'CuRrEnT_BoOk' to 'currentBook'.
+		ui.setState(FixBookUI.uiState.FIXING);		// Changed variable name 'Ui.SeT_StAtE' to 'ui.setState'and 'uI_sTaTe' to 'uiState'.
+		state = ControlState.FIXING;			// Changed variable name 'StAtE' to 'state'and 'CoNtRoL_StAtE' to 'ControlState'.
 	}
 
     public void FiX_BoOk(boolean mUsT_FiX) {
