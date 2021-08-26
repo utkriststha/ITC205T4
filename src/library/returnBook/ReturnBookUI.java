@@ -24,15 +24,15 @@ public class ReturnBookUI {
 		
 		while (true) {
 			
-			switch (StATe) {
+			switch (state) {// Changed 'StATe' to 'state'
 			
 			case INITIALISED:
 				break;
 				
 			case READY:
-				String BoOk_InPuT_StRiNg = iNpUt("Scan Book (<enter> completes): ");
-				if (BoOk_InPuT_StRiNg.length() == 0) 
-					CoNtRoL.sCaNnInG_cOmPlEtE();
+				String BookInputString = input("Scan Book (<enter> completes): ");// Changed 'BoOk_InPuT_StRiNg' to 'BookInputString' and 'iNpUt' to 'input'
+				if (BoOk_InPuT_StRiNg.length() == 0) // Changed 'BoOk_InPuT_StRiNg' to 'BookInputString' 
+					control.scanningComplete();// Changed 'CoNtRoL' to 'control' and 'sCaNnInG_cOmPlEtE' to 'scanningComplete'
 				
 				else {
 					try {
