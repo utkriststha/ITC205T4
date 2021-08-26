@@ -5,7 +5,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Book implements Serializable {
 	
-	private String title; //Changed 'tItLe' to 'title' 
+	private String title; //Changed 'tItLe' to 'title' // Indents size was fixed
 	private String author;//Changed 'AuThOr' to 'author'
 	private String callNo;//Changed 'CALLNO' to 'callNo'
 	private int id;//Changed 'iD' to 'id'
