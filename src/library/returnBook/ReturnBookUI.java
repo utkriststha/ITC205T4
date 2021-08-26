@@ -1,26 +1,26 @@
 package library.returnBook;
 import java.util.Scanner;
 
-
+// Indents size changed to 4 spaces 
 public class ReturnBookUI {
 
-	public static enum uI_sTaTe { INITIALISED, READY, INSPECTING, COMPLETED };
+	public static enum UIState { INITIALISED, READY, INSPECTING, COMPLETED };// Class name changed from 'uI_sTaTe' to 'UIState'
 
-	private rETURN_bOOK_cONTROL CoNtRoL;
-	private Scanner iNpUt;
-	private uI_sTaTe StATe;
+	private ReturnBookControl control;// Changed 'rETURN_bOOK_cONTROL' to 'ReturnBookControl' and 'CoNtRoL' to 'control'
+	private Scanner input;// ' iNpUt' changed to 'input'
+	private UIState state;// Changed 'uI_sTaTe' to 'UIState' and 'StATe' to 'state'
 
 	
-	public ReturnBookUI(rETURN_bOOK_cONTROL cOnTrOL) {
-		this.CoNtRoL = cOnTrOL;
-		iNpUt = new Scanner(System.in);
-		StATe = uI_sTaTe.INITIALISED;
-		cOnTrOL.sEt_uI(this);
+	public ReturnBookUI(ReturnBookControl control) {// variable name changed from 'rETURN_bOOK_cONTROL' to 'ReturnBookControl' and 'cOnTrOL' to 'control'
+		this.control = control;// changed variable name 'CoNtRoL' to 'control' and 'cOnTrOL' to 'control'
+		input = new Scanner(System.in);//' iNpUt' changed to 'input'
+		StATe = UIState.INITIALISED;// Changed 'StATe' to 'state' and 'uI_sTaTe' to 'UIState' 
+		control.setUI(this);// Changed 'cOnTrOL.sEt_uI' to 'control.setUI'
 	}
 
 
-	public void RuN() {		
-		oUtPuT("Return Book Use Case UI\n");
+	public void run() {		// Changed class name 'RuN' to ''run
+		output("Return Book Use Case UI\n");// Changed method name 'oUtPuT' to 'output'
 		
 		while (true) {
 			
