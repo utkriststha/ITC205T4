@@ -40,16 +40,16 @@ public class ReturnBookUI {
 						control.bookScannedd(bookId);// Changed 'CoNtRoL' to 'control', 'bOoK_sCaNnEd' to 'bookScanned' and 'Book_Id' to 'bookId'
 					}
 					catch (NumberFormatException e) {
-						oUtPuT("Invalid bookId");
+						output("Invalid bookId");// Changed method name 'oUtPuT' to 'output'
 					}					
 				}
 				break;				
 				
 			case INSPECTING:
-				String AnS = iNpUt("Is book damaged? (Y/N): ");
-				boolean Is_DAmAgEd = false;
-				if (AnS.toUpperCase().equals("Y")) 					
-					Is_DAmAgEd = true;
+				String ans = input("Is book damaged? (Y/N): ");// Changed variable name 'AnS' to 'ans' and method name  'iNpUt' to 'input'
+				boolean isDamaged = false;// Changed 'Is_DAmAgEd' to 'isDamaged'
+				if (ans.toUpperCase().equals("Y")) //Changed variable name 'AnS' to 'ans' 			
+					isDamaged = true;//Changed 'Is_DAmAgEd ' to 'isDamaged'
 				
 				CoNtRoL.dIsChArGe_lOaN(Is_DAmAgEd);
 			
