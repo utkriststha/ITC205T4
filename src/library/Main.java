@@ -53,27 +53,27 @@ public class Main {
 
     public static void main(String[] args) {		
 	try {			
-	    IN = new Scanner(System.in);
-	    LIB = Library.GeTiNsTaNcE();
-	    CAL = Calendar.gEtInStAnCe();
-	    SDF = new SimpleDateFormat("dd/MM/yyyy");
+	    input = new Scanner(System.in);				// Changed variable name 'IN' to 'input'.					
+	    library = Library.getInstance();				// Changed variable name 'LIB' to 'library' and 'GeTiNsTaNcE' to 'getInstance'.	
+	    calendar = Calendar.getInstance();				// Changed variable name 'CAL' to 'calendar' and 'gEtInStAnCe' to 'getInstance'.
+	    simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");	// Changed variable name 'SDF' to 'simpleDateFormat'.		
 	
-	    for (Member m : LIB.lIsT_MeMbErS()) {
-		output(m);
+	    for (Member menu : library.listMembers()) {			// Changed variable name 'm' to 'menu' and 'LIB.lIsT_MeMbErS' to 'library.listMembers'.
+		output(menu);						// Changed variable name 'm' to 'menu'.
 	    }
 		
 	    output(" ");
 		
-	    for (Book b : LIB.lIsT_BoOkS()) {
-		output(b);
+	    for (Book book : library.listBooks()) {			// Changed variable name 'b' to 'book' and 'LIB.lIsT_BoOkS' to 'library.listBooks'.
+		output(book);						// Changed variable name 'b' to 'book'.
 	    }
 						
-	    MENU = Get_menu();
+	    menu = getMenu();						// Changed variable name 'MENU' to 'menu' and 'Get_menu' to 'getMenu'.
 	    boolean e = false;
 			
 	    while (!e) {
 				
-	        output("\n" + SDF.format(CAL.gEt_DaTe()));
+	        output("\n" + simpleDateFormat.format(calendar.getDate()));	// Changed variable name 'SDF' to 'simpleDateFormat', 'CAL' to 'calendar' and 'gEt_DaTe' to 'getDate'.
 		String c = input(MENU);
 				
 	        switch (c.toUpperCase()) {
