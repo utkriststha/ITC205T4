@@ -15,17 +15,17 @@ public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL'
 
 	public ReturnBookControl() {// Changed class name 'rETURN_bOOK_cONTROL' to 'ReturnBookControl'
 		this.lIbRaRy = Library.getInstanc();//Changed variable name 'lIbRaRy' to 'library' and 'GeTiNsTaNcE' to 'getInstance'
-		state = ControlState.INITIALISED;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'
+		state = controlState.INITIALISED;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
 	}
 	
 	
 	public void setUI(ReturnBookUI ui) {// Changed 'sEt_uI' to 'setUI' and  ' uI' to 'ui'
-		if (!state.equals(ControlState.INITIALISED)) // Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'
+		if (!state.equals(controlState.INITIALISED)) // Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		
 		this.ui = ui;// Changed 'Ui' to 'ui' and 'uI' to 'ui'
 		ui.setState(ReturnBookUI.UIstate.READY);//// Changed 'uI' to 'ui', 'set_sTaTe' to 'setState' and 'uI_sTaTe' to 'UIstate'
-		state = ControlState.READY;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'		
+		state = controlState.READY;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'		
 	}
 
 
