@@ -16,66 +16,65 @@ import java.util.Map;
 
 @SuppressWarnings("serial")
 public class Library implements Serializable {
-	
-	private static final String lIbRaRyFiLe = "library.obj";
-	private static final int lOaNlImIt = 2;
-	private static final int loanPeriod = 2;
-	private static final double FiNe_PeR_DaY = 1.0;
-	private static final double maxFinesOwed = 1.0;
-	private static final double damageFee = 2.0;
-	
-	private static Library SeLf;
-	private int bOoK_Id;
-	private int mEmBeR_Id;
-	private int lOaN_Id;
-	private Date lOaN_DaTe;
-	
-	private Map<Integer, Book> CaTaLoG;
-	private Map<Integer, Member> MeMbErS;
-	private Map<Integer, Loan> LoAnS;
-	private Map<Integer, Loan> CuRrEnT_LoAnS;
-	private Map<Integer, Book> DaMaGeD_BoOkS;
-	
+
+	private static final String LIBRARY_FILE = "library.obj"; //Changed 'lIbRaRyFiLe' to 'LIBRARY_FILE'
+	private static final int LOAN_LIMIT = 2; //Changed 'lOaNlImIt' to 'LOAN_LIMIT'
+	private static final int LOAN_PERIOD = 2; //Changed 'loanPeriod' to 'LOAN_PERIOD'
+	private static final double FINE_PER_DAY = 1.0; //Changed 'FiNe_PeR_DaY' to 'FINE_PER_DAY'
+	private static final double MAX_FINES_OWED = 1.0; //Changed 'maxFinesOwed' to 'MAX_FINES_OWED'
+	private static final double DAMAGE_FEE = 2.0; //Changed 'damageFee' to 'DAMAGE_FEE'
+
+	private static Library self; //Changed 'SeLf' to 'self'
+	private int bookId; //Changed 'bOoK_Id' to 'bookId'
+	private int memberId; //Changed 'mEmBeR_Id' to 'memberId'
+	private int loanId; //Changed 'lOaN_Id;' to 'loadId'
+	private Date loanDate; //Changed 'lOaN_DaTe' to 'loanDate'
+
+	private Map<Integer, Book> catalog; //Changed 'CaTaLoG' to 'catalog' 
+	private Map<Integer, Member> members; //Changed 'MeMbErS' to 'members'
+	private Map<Integer, Loan> loans; //Changed 'LoAnS' to 'loans'
+	private Map<Integer, Loan> curentLoans; //Changed 'CuRrEnT_LoAnS' to 'currentLoans'
+	private Map<Integer, Book> damagedBooks; //Changed 'DaMaGeD_BoOkS' to 'damagedBooks'
+
 
 	private Library() {
-		CaTaLoG = new HashMap<>();
-		MeMbErS = new HashMap<>();
-		LoAnS = new HashMap<>();
-		CuRrEnT_LoAnS = new HashMap<>();
-		DaMaGeD_BoOkS = new HashMap<>();
-		bOoK_Id = 1;
-		mEmBeR_Id = 1;		
-		lOaN_Id = 1;		
+		catalog = new HashMap<>(); //Changed 'CaTaLoG' to 'catalog' 
+		members = new HashMap<>(); //Changed 'MeMbErS' to 'members'
+		loans = new HashMap<>(); //Changed 'LoAnS' to 'loans'
+		currentLoans = new HashMap<>(); //Changed 'CuRrEnT_LoAnS' to 'currentLoans'
+		damagedBooks = new HashMap<>(); //Changed 'DaMaGeD_BoOkS' to 'damagedBooks'
+		bookId = 1; //Changed 'bOoK_Id' to 'bookId'
+		memberId = 1; //Changed 'mEmBeR_Id' to 'memberId'	
+		loanId = 1; //Changed 'lOaN_Id;' to 'loadId'	
 	}
 
-	
-	public static synchronized Library GeTiNsTaNcE() {		
-		if (SeLf == null) {
-			Path PATH = Paths.get(lIbRaRyFiLe);			
-			if (Files.exists(PATH)) {	
-				try (ObjectInputStream LiBrArY_FiLe = new ObjectInputStream(new FileInputStream(lIbRaRyFiLe));) {
-			    
-					SeLf = (Library) LiBrArY_FiLe.readObject();
-					Calendar.gEtInStAnCe().SeT_DaTe(SeLf.lOaN_DaTe);
-					LiBrArY_FiLe.close();
+
+	public static synchronized Library getInstance() { // Changes 'GeTiNsTaNcE()' to 'getInstance()'		
+		if (self == null) { //Changed 'SeLf' to 'self'
+			Path path = Paths.get(LIBRARY_FILE); //Changed 'lIbRaRyFiLe' to 'LIBRARY_FILE' & 'PATH' to 'path'		
+			if (Files.exists(path)) { //Changed 'PATH' to 'path'	
+				try (ObjectInputStream libraryFile = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) { //Changed 'lIbRaRyFiLe' to 'LIBRARY_FILE' & 'LiBrArY_FiLe' to 'libraryFile'
+					self = (Library) libraryFile.readObject(); //Changed 'LiBrArY_FiLe' to 'libraryFile' & 'SeLf' to 'self'
+					Calendar.getInstance().setDate(self.loanDate); //Changed 'gEtInStAnCe()' to 'getInstance' & 'SeT_DaTe' to 'setDate' & 'lOaN_DaTe' to 'loadDate' & 'SeLf' to 'self'
+					libraryFile.close(); //Changed 'LiBrArY_FiLe' to 'libraryFile'
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else SeLf = new Library();
+			else self = new Library();  //Changed 'SeLf' to 'self'
 		}
-		return SeLf;
+		return self;  //Changed 'SeLf' to 'self'
 	}
 
-	
-	public static synchronized void SaVe() {
-		if (SeLf != null) {
-			SeLf.lOaN_DaTe = Calendar.gEtInStAnCe().gEt_DaTe();
-			try (ObjectOutputStream LiBrArY_fIlE = new ObjectOutputStream(new FileOutputStream(lIbRaRyFiLe));) {
-				LiBrArY_fIlE.writeObject(SeLf);
-				LiBrArY_fIlE.flush();
-				LiBrArY_fIlE.close();	
+
+	public static synchronized void save() { //Changed 'SaVe' to 'save'
+		if (self != null) { //Changed 'SeLf' to 'self'
+			self.loanDate = Calendar.getInstance().getDate(); //Changed 'SeLf' to 'self' & 'gEtInStAnCe()' to 'getInstance' & 'gEt_DaTe' to 'getDate' & 'lOaN_DaTe' to 'loadDate'
+			try (ObjectOutputStream libraryFile = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) { //Changed 'LiBrArY_FiLe' to 'libraryFile' & 'lIbRaRyFiLe' to 'LIBRARY_FILE'
+				libraryFile.writeObject(self); //Changed 'LiBrArY_FiLe' to 'libraryFile' & 'SeLf' to 'self'
+				libraryFile.flush(); //Changed 'LiBrArY_FiLe' to 'libraryFile'
+				libraryFile.close(); //Changed 'LiBrArY_FiLe' to 'libraryFile'
 			}
 			catch (Exception e) {
 				throw new RuntimeException(e);
@@ -83,164 +82,172 @@ public class Library implements Serializable {
 		}
 	}
 
-	
-	public int gEt_BoOkId() {
-		return bOoK_Id;
-	}
-	
-	
-	public int gEt_MeMbEr_Id() {
-		return mEmBeR_Id;
-	}
-	
-	
-	private int gEt_NeXt_BoOk_Id() {
-		return bOoK_Id++;
-	}
 
-	
-	private int gEt_NeXt_MeMbEr_Id() {
-		return mEmBeR_Id++;
-	}
-
-	
-	private int gEt_NeXt_LoAn_Id() {
-		return lOaN_Id++;
-	}
-
-	
-	public List<Member> lIsT_MeMbErS() {		
-		return new ArrayList<Member>(MeMbErS.values()); 
+	public int getBookId() { //Changed 'gEt_BoOkId' to 'getBookId'
+		return bookId; //Changed 'bOoK_Id' to 'bookId'
 	}
 
 
-	public List<Book> lIsT_BoOkS() {		
-		return new ArrayList<Book>(CaTaLoG.values()); 
+	public int getMemberId() {//Changed 'gEt_MeMbEr_Id' to 'getMemberId'
+		return memberId; //Changed 'mEmBeR_Id' to 'memberId'
 	}
 
 
-	public List<Loan> lISt_CuRrEnT_LoAnS() {
-		return new ArrayList<Loan>(CuRrEnT_LoAnS.values());
+	private int getNextBookId() {//Changed 'gEt_NeXt_BoOk_Id' to 'getNextBookId'
+		return bookId++; //Changed 'bOoK_Id' to 'bookId'
 	}
 
 
-	public Member aDd_MeMbEr(String lastName, String firstName, String email, int phoneNo) {		
-		Member member = new Member(lastName, firstName, email, phoneNo, gEt_NeXt_MeMbEr_Id());
-		MeMbErS.put(member.GeT_ID(), member);		
+	private int getNextMemberId() { //Changed 'gEt_NeXt_MeMbEr_Id' to 'getNextMemberId'
+		return memberId++; //Changed 'mEmBeR_Id' to 'memberId'
+	}
+
+
+	private int getNextLoanId() { //Changed 'gEt_NeXt_LoAn_Id' to 'getNextLoadId'
+		return loanId++; //Changed 'lOaN_Id;' to 'loadId'
+	}
+
+
+	public List<Member> listMembers() { // Changed 'LIsT_MeMbErS' to 'listMembers'	
+		return new ArrayList<Member>(member.values()); //Changed 'MeMbErS' to 'members'
+	}
+
+
+	public List<Book> listBooks() { // Changed 'lIsT_BoOkS' to 'listMembers'		
+		return new ArrayList<Book>(CaTaLoG.values()); //Changed 'CaTaLoG' to 'catalog' 
+	}
+
+
+	public List<Loan> listCurentLoans() { // Changed 'lISt_CuRrEnT_LoAnS' to 'listMembers'	
+		return new ArrayList<Loan>(curentLoans.values()); //Changed 'CuRrEnT_LoAnS' to 'currentLoans'
+	}
+
+
+	public Member addMember(String lastName, String firstName, String email, int phoneNo) { //Changed 'aDd_MeMbEr' to 'addMember'		
+		Member member = new Member(lastName, firstName, email, phoneNo, getNextMemberId()); //Changed 'gEt_NeXt_MeMbEr_Id' to 'getNextMemberId'
+		members.put(member.getId(), member);// Changed 'GeT_ID' to 'getId' & gEt_MeMbEr	
 		return member;
 	}
 
-	
-	public Book aDd_BoOk(String a, String t, String c) {		
-		Book b = new Book(a, t, c, gEt_NeXt_BoOk_Id());
-		CaTaLoG.put(b.gEtId(), b);		
-		return b;
+
+	public Book addBook(String author, String title, String callNo) {// Changed 'aDd_BoOk' to 'addBook' & 'a' to 'author' & 't' to 'title' & 'c' to 'callNo'
+		Book book = new Book(author, title, callNo, getNextBookId()); // Changed 'gEt_NeXt_BoOk_Id' to 'getNextBookId' & 'b' to 'book'
+		catalog.put(book.getId(), book); //Changed 'CaTaLoG' to 'catalog' & 'gEtId' to 'getId'  & 'b' to 'book'
+		return book;
 	}
 
-	
-	public Member gEt_MeMbEr(int memberId) {
-		if (MeMbErS.containsKey(memberId)) 
-			return MeMbErS.get(memberId);
+
+	public Member getMember(int memberId) { //Changed 'gEt_MeMbEr' to 'getMember'
+		if (members.containsKey(memberId)){ //Changed 'MeMbErS' to 'members' & added {}
+			return members.get(memberId); //Changed 'MeMbErS' to 'members'
+		}
 		return null;
 	}
 
-	
-	public Book gEt_BoOk(int bookId) {
-		if (CaTaLoG.containsKey(bookId)) 
-			return CaTaLoG.get(bookId);		
+
+	public Book getBook(int bookId) { //Changed 'gEt_BoOk' to 'getBook'
+		if (catalog.containsKey(bookId)){ //Changed 'CaTaLoG' to 'catalog' & added {}
+			return catalog.get(bookId); //Changed 'CaTaLoG' to 'catalog' 
+		}
 		return null;
 	}
 
-	
-	public int gEt_LoAn_LiMiT() {
-		return lOaNlImIt;
+
+	public int getLoanLimit() { //Changed 'gEt_LoAn_LiMiT' to 'getLoanLimit'
+		return LOAN_LIMIT; //Changed 'lOaNlImIt' to 'LOAN_LIMIT'
 	}
 
-	
-	public boolean cAn_MeMbEr_BoRrOw(Member member) {		
-		if (member.gEt_nUmBeR_Of_CuRrEnT_LoAnS() == lOaNlImIt ) 
+
+	public boolean canMemberBorrow(Member member) {//Changed 'cAn_MeMbEr_BoRrOw' to 'canMemberBorrow'		
+		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT){ //Changed 'gEt_nUmBeR_Of_CuRrEnT_LoAnS' to 'getNumberOfCurrentLoans' & 'lOaNlImIt' to 'LOAN_LIMIT' & added {}
 			return false;
-				
-		if (member.FiNeS_OwEd() >= maxFinesOwed) 
+		}	
+		if (member.fineOwed() >= MAX_FINES_OWED){ //Changed 'FiNeS_OwEd' to 'fineOwed' & 'maxFinesOwed' to 'MAX_FINES_OWED' & added {}
 			return false;
-				
-		for (Loan loan : member.GeT_LoAnS()) 
-			if (loan.Is_OvEr_DuE()) 
+		}	
+		for (Loan loan : member.getLoans()){ // Changed 'GeT_LoAnS' & 'getLoans' & added {}
+			if (loan.isOverDue()){ //Changed 'Is_OvEr_DuE' & 'isOverDue' & added {}
 				return false;
-			
-		return true;
+			}
+			return true;
+		}
 	}
 
-	
-	public int gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr(Member MeMbEr) {		
-		return lOaNlImIt - MeMbEr.gEt_nUmBeR_Of_CuRrEnT_LoAnS();
+
+	public int getNumberOfLoansRemainingForMember(Member member) { //Changed 'MeMbErS' to 'members' & 'gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr' to 'getNumberOfLoansRemainingForMember'
+		return LOAN_LIMIT - member.getNumberOfCurrentLoans(); //Changed 'MeMbErS' to 'members' & 'lOaNlImIt' to 'LOAN_LIMIT' & 'gEt_nUmBeR_Of_CuRrEnT_LoAnS' to 'getNumberOfCurrentLoans'
 	}
 
-	
-	public Loan iSsUe_LoAn(Book book, Member member) {
-		Date dueDate = Calendar.gEtInStAnCe().gEt_DuE_DaTe(loanPeriod);
-		Loan loan = new Loan(gEt_NeXt_LoAn_Id(), book, member, dueDate);
-		member.TaKe_OuT_LoAn(loan);
-		book.BoRrOw();
-		LoAnS.put(loan.GeT_Id(), loan);
-		CuRrEnT_LoAnS.put(book.gEtId(), loan);
+
+	public Loan issueLoan(Book book, Member member) { //Changed 'iSsUe_LoAn' to 'issueLoan'
+		Date dueDate = Calendar.getInstance().getDueDate(loanPeriod); //Changed 'gEtInStAnCe' to 'getInstance' & 'gEt_DuE_DaTe' to 'getDueDate'
+		Loan loan = new Loan(gEt_NeXt_LoAn_Id(), book, member, dueDate);// Changed 'gEt_NeXt_LoAn_Id' to 'getNextLoanId'
+		member.takeOutLoan(loan);//Changed 'TaKe_OuT_LoAn' to 'takeOutLoan
+		book.borrow(); //Changed 'BoRrOw' & 'borrow' 
+		loans.put(loan.getId(), loan); //Changed 'LoAnS' to 'loans' & 'GeT_Id' to 'getId'
+		currentLoans.put(book.getId(), loan);//Changed 'CuRrEnT_LoAnS' to 'currentLoans' & 'gEtId' to 'getId'
 		return loan;
 	}
-	
-	
-	public Loan GeT_LoAn_By_BoOkId(int bookId) {
-		if (CuRrEnT_LoAnS.containsKey(bookId)) 
-			return CuRrEnT_LoAnS.get(bookId);
-		
+
+
+	public Loan getLoanByBookId(int bookId) { //Chnaged 'GeT_LoAn_By_BoOkId' to 'getLoanByBookId'
+		if (currentLoans.containsKey(bookId)){ //Changed 'CuRrEnT_LoAnS' to ;currentLoans' & added {}
+			return currentLoans.get(bookId); //Changed 'CuRrEnT_LoAnS' to ;currentLoans'
+		}
 		return null;
 	}
 
-	
-	public double CaLcUlAtE_OvEr_DuE_FiNe(Loan LoAn) {
-		if (LoAn.Is_OvEr_DuE()) {
-			long DaYs_OvEr_DuE = Calendar.gEtInStAnCe().GeT_DaYs_DiFfErEnCe(LoAn.GeT_DuE_DaTe());
-			double fInE = DaYs_OvEr_DuE * FiNe_PeR_DaY;
-			return fInE;
+
+	public double calculateOverDueFine(Loan loan) { //Changed 'CaLcUlAtE_OvEr_DuE_FiNe' to 'calculateOverDueFine' & 'LoAn' to 'loan'
+		if (loan.isOverDue()) {//Changed 'Is_OvEr_DuE' to 'isOverDue' & 'LoAn' to 'loan'
+			long daysOverDue = Calendar.getInstance().getDaysDifference(loan.getDueDate()); //Changed 'DaYs_OvEr_DuE' to 'dayOverDue' & 'gEtInStAnCe()' to 'getInstance' &  'GeT_DaYs_DiFfErEnCe' to 'getDayDifference' & 'GeT_DuE_DaTe' to 'getDueDate' & 'LoAn' to 'loan'
+			double fine = daysOverDue * finePerDay; //Changed 'DaYs_OvEr_DuE' to 'dayOverDue' & 'FiNe_PeR_DaY' to 'FINE_PER_DAY' & 'fInE' to 'fine'
+			return fine; //Changed 'fInE' to 'fine'
 		}
 		return 0.0;		
 	}
 
 
-	public void DiScHaRgE_LoAn(Loan cUrReNt_LoAn, boolean iS_dAmAgEd) {
-		Member mEmBeR = cUrReNt_LoAn.GeT_MeMbEr();
-		Book bOoK  = cUrReNt_LoAn.GeT_BoOk();
-		
-		double oVeR_DuE_FiNe = CaLcUlAtE_OvEr_DuE_FiNe(cUrReNt_LoAn);
-		mEmBeR.AdD_FiNe(oVeR_DuE_FiNe);	
-		
-		mEmBeR.dIsChArGeLoAn(cUrReNt_LoAn);
-		bOoK.ReTuRn(iS_dAmAgEd);
-		if (iS_dAmAgEd) {
-			mEmBeR.AdD_FiNe(damageFee);
-			DaMaGeD_BoOkS.put(bOoK.gEtId(), bOoK);
+	public void dischargeLoan(Loan currentLoan, boolean isDamaged) { //Changed 'DiScHaRgE_LoAn' to 'dischargeLoan' & 'cUrReNt_LoAn' to 'currentLoan' & 'iS_dAmAgEd' to 'isDamanged'
+		Member member = currentLoan.getMember(); //Changed 'mEmBeR' to 'member' & 'cUrReNt_LoAn' to 'currentLoan' &  'GeT_MeMbEr' to 'getMember'
+		Book book  = currentLoan.getBook(); //Changed 'cUrReNt_LoAn' to 'currentLoan' & 'GeT_BoOk' to 'getBook' & 'bOoK' to 'book'
+
+		double overDueFine = calculateOverDueFine(currentLoan); //Changed 'CaLcUlAtE_OvEr_DuE_FiNe' to 'calculateOverDueFine' & 'cUrReNt_LoAn' to 'currentLoan' & 'oVeR_DuE_FiNe' to 'overDueFine'
+		member.addFine(overDueFine); //Changed'oVeR_DuE_FiNe' to 'overDueFine' & 'AdD_FiNe' to 'addFine' & 'mEmBeR' to 'member'
+
+		member.dischargeLoan(currentLoan);//Changed 'cUrReNt_LoAn' to 'currentLoan' & 'cUrReNt_LoAn' to 'currentLoan' & 'dIsChArGeLoAn' to 'dischargeLoan' & 'mEmBeR' to 'member'
+		book.returnBook(isDamaged); //Changed 'bOoK' to 'book' & 'ReTuRn' to 'returnBook' & 'iS_dAmAgEd' to 'isDamaged'
+		if (isDamaged) { //Changed 'iS_dAmAgEd' to 'isDamaged'
+			member.addFine(damageFee); //Changed 'mEmBeR' to 'member' & 'AdD_FiNe' to 'addFine' 
+			damagedBook.put(book.getId(), book); //Changed 'bOoK' to 'book' & 'DaMaGeD_BoOkS' to 'damageBooks' & 'gEtId' to 'getId'
 		}
-		cUrReNt_LoAn.DiScHaRgE();
-		CuRrEnT_LoAnS.remove(bOoK.gEtId());
+		currentLoan.discharge(); //Changed 'cUrReNt_LoAn' to 'currentLoan' & 'DiScHaRgE' to 'discharge'
+		currentLoan.remove(book.getId()); //Changed 'cUrReNt_LoAn' to 'currentLoan' & 'bOoK' to 'book & 'gEtId' to 'getId'
 	}
 
 
-	public void cHeCk_CuRrEnT_LoAnS() {
-		for (Loan lOaN : CuRrEnT_LoAnS.values()) 
-			lOaN.cHeCk_OvEr_DuE();
-				
+	public void checkCurrentLoans() {//Changed 'cHeCk_CuRrEnT_LoAnS' to 'checkCurrentLoans'
+		for (Loan loan : currentLoan.values()) //Changed 'lOaN' to 'loan' & 'CuRrEnT_LoAnS' to 'currentLoans'
+			loan.checkOverDue(); //Changed 'lOaN' to 'loan' & 'cHeCk_OvEr_DuE' to 'checkOverDue'
+
 	}
 
 
-	public void RePaIr_BoOk(Book cUrReNt_BoOk) {
-		if (DaMaGeD_BoOkS.containsKey(cUrReNt_BoOk.gEtId())) {
-			cUrReNt_BoOk.RePaIr();
-			DaMaGeD_BoOkS.remove(cUrReNt_BoOk.gEtId());
+	public void repairBook(Book currentBook) { //Changed 'RePaIr_BoOk' to 'repairBook' & 'cUrReNt_BoOk' to 'currentBook'
+		if (damagedBook.containsKey(currentBook.getId())) { //Changed 'DaMaGeD_BoOkS' to 'damagedBooks' & 'cUrReNt_BoOk' to 'currentBook' & 'gEtId' to 'getId'
+			currentBook.repair(); //Chnaged 'cUrReNt_BoOk' to 'currentBook' & 'RePaIr' to 'repair'
+			damagedBook.remove(currentBook.getId()); { //Changed 'DaMaGeD_BoOkS' to 'damagedBooks' & 'cUrReNt_BoOk' to 'currentBook' & 'gEtId' to 'getId'
+			}
+			else 
+				throw new RuntimeException("Library: repairBook: book is not damaged");
+
+
 		}
-		else 
-			throw new RuntimeException("Library: repairBook: book is not damaged");
-		
-		
+
+
 	}
-	
-	
-}
+	package Task1;
+
+	public class test {
+
+	}

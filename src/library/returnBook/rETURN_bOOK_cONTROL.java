@@ -3,29 +3,29 @@ import library.entities.Book;
 import library.entities.Library;
 import library.entities.Loan;
 
-public class rETURN_bOOK_cONTROL {
-
+public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL' to 'ReturnBookControl'
+// indents size are changed to 4 spaces
 	private ReturnBookUI Ui;
-	private enum cOnTrOl_sTaTe { INITIALISED, READY, INSPECTING };
-	private cOnTrOl_sTaTe sTaTe;
+	private enum controlState { INITIALISED, READY, INSPECTING };// Changed 'cOnTrOl_sTaTe' to 'controlState'
+	private controlState State;// Changed class name 'cOnTrOl_sTaTe sTaTe' to 'ControlState State'
 	
-	private Library lIbRaRy;
-	private Loan CurrENT_loan;
+	private Library library;// Changed class name 'lIbRaRy' to 'library'
+	private Loan currentLoan;// Changed 'CurrENT_loan' to 'CurrentLoan'
 	
 
-	public rETURN_bOOK_cONTROL() {
-		this.lIbRaRy = Library.GeTiNsTaNcE();
-		sTaTe = cOnTrOl_sTaTe.INITIALISED;
+	public ReturnBookControl() {// Changed class name 'rETURN_bOOK_cONTROL' to 'ReturnBookControl'
+		this.library = Library.getInstanc();//Changed variable name 'lIbRaRy' to 'library' and 'GeTiNsTaNcE' to 'getInstance'
+		state = controlState.INITIALISED;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
 	}
 	
 	
-	public void sEt_uI(ReturnBookUI uI) {
-		if (!sTaTe.equals(cOnTrOl_sTaTe.INITIALISED)) 
+	public void setUI(ReturnBookUI ui) {// Changed 'sEt_uI' to 'setUI' and  ' uI' to 'ui'
+		if (!state.equals(controlState.INITIALISED)) // Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		
-		this.Ui = uI;
-		uI.sEt_sTaTe(ReturnBookUI.uI_sTaTe.READY);
-		sTaTe = cOnTrOl_sTaTe.READY;		
+		this.ui = ui;// Changed 'Ui' to 'ui' and 'uI' to 'ui'
+		ui.setState(ReturnBookUI.UIstate.READY);//// Changed 'uI' to 'ui', 'set_sTaTe' to 'setState' and 'uI_sTaTe' to 'UIstate'
+		state = controlState.READY;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'		
 	}
 
 
