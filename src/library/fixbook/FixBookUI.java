@@ -19,7 +19,7 @@ public class FixBookUI {
     }
 
 
-    public void setState(uI_sTaTe state) {		// Change method name 'SeT_StAtE' to 'setState' and 'uI_sTaTe' to 'UIState'.
+    public void setState(UIState state) {		// Change method name 'SeT_StAtE' to 'setState' and 'uI_sTaTe' to 'UIState'.
 	this.state = state;				// Change variable name 'StAtE' to 'state'.
     }
 
@@ -52,17 +52,17 @@ public class FixBookUI {
 		String answer = input("Fix Book? (Y/N) : ");			// Change variable name 'AnS' to 'answer' and 'iNpUt' to 'input'.
 		boolean fix = false;						// Change variable name 'FiX' to 'fix'.
 		if (answer.toUpperCase().equals("Y")) 				// Change variable name 'AnS' to 'answer'
-		    FiX = true;							// Change variable name 'FiX' to 'fix'.
-		    CoNtRoL.FiX_BoOk(fix);
+		    fix = true;							// Change variable name 'FiX' to 'fix'.
+		    control.fixBook(fix);					// Change variable name 'CoNtRoL' to 'control' and 'FiX_BoOk' to 'fixBook'.
 		    break;
 								
 		case COMPLETED:
-		    OuTpUt("Fixing process complete");
+		    output("Fixing process complete");				// Change variable name 'OuTpUt' to 'output'.
 		    return;
 			
 		default:
-		    OuTpUt("Unhandled state");
-			throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+		    output("Unhandled state");							// Change variable name 'OuTpUt' to 'output'.
+			throw new RuntimeException("FixBookUI : unhandled state :" + state);	// Change variable name 'StAtE' to 'state'.		
 			
 			}		
 		}
@@ -70,19 +70,19 @@ public class FixBookUI {
 	}
 
 	
-    private String iNpUt(String prompt) {
+    private String input(String prompt) {		// Change method name 'iNpUt' to 'input'.
 	System.out.print(prompt);
-	return InPuT.nextLine();
+	return input.nextLine();			// Change variable name 'iNpUt' to 'input'.
     }	
 		
 		
-    private void OuTpUt(Object object) {
+    private void output(Object object) {		// Change variable name 'OuTpUt' to 'output'.
 	System.out.println(object);
     }
 	
 
-   public void dIsPlAy(Object object) {
-	OuTpUt(object);
+   public void display(Object object) {			// Change method name 'dIsPlAy' to 'display'.
+	output(object);					// Change variable name 'OuTpUt' to 'output'.
    }
 	
 	
