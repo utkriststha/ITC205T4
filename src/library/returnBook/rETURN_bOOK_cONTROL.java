@@ -29,14 +29,14 @@ public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL'
 	}
 
 
-	public void bOoK_sCaNnEd(int bOoK_iD) {
-		if (!sTaTe.equals(cOnTrOl_sTaTe.READY)) 
+	public void bookScanned(int bookId) {// Changed 'bOoK_sCaNnEd' to 'bookScanned' and 'bOoK_iD' to 'bookId'
+		if (!state.equals(controlState.READY)) // Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		
-		Book cUrReNt_bOoK = lIbRaRy.gEt_BoOk(bOoK_iD);
+		Book currentBook =library.getBook(bookId);// Changed 'cUrReNt_bOoK ' to 'currentBook', 'lIbRaRy' to 'library', 'gEt_BoOk' to 'getBook' and 'bookId'
 		
-		if (cUrReNt_bOoK == null) {
-			Ui.DiSpLaY("Invalid Book Id");
+		if (currentBook == null) {// Changed variable name 'cUrReNt_bOoK' to 'currentBook'
+			ui.display"Invalid Book Id");// Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display'
 			return;
 		}
 		if (!cUrReNt_bOoK.iS_On_LoAn()) {
