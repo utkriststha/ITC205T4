@@ -6,15 +6,15 @@ import library.entities.Loan;
 public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL' to 'ReturnBookControl'
 // indents size are changed to 4 spaces
 	private ReturnBookUI Ui;
-	private enum ControlState { INITIALISED, READY, INSPECTING };// Changed 'cOnTrOl_sTaTe' to 'ControlState'
-	private ControlState State;// Changed class name 'cOnTrOl_sTaTe sTaTe' to 'ControlState State'
+	private enum controlState { INITIALISED, READY, INSPECTING };// Changed 'cOnTrOl_sTaTe' to 'controlState'
+	private controlState State;// Changed class name 'cOnTrOl_sTaTe sTaTe' to 'ControlState State'
 	
 	private Library library;// Changed class name 'lIbRaRy' to 'library'
-	private Loan CurrentLoan;// Changed 'CurrENT_loan' to 'CurrentLoan'
+	private Loan currentLoan;// Changed 'CurrENT_loan' to 'CurrentLoan'
 	
 
 	public ReturnBookControl() {// Changed class name 'rETURN_bOOK_cONTROL' to 'ReturnBookControl'
-		this.lIbRaRy = Library.getInstanc();//Changed variable name 'lIbRaRy' to 'library' and 'GeTiNsTaNcE' to 'getInstance'
+		this.library = Library.getInstanc();//Changed variable name 'lIbRaRy' to 'library' and 'GeTiNsTaNcE' to 'getInstance'
 		state = controlState.INITIALISED;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
 	}
 	
