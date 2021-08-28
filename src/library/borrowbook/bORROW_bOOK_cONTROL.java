@@ -21,7 +21,7 @@ public class BorrowBookControl { //Changed 'bORROW_bOOK_cONTROL' to 'BorrowBookC
 	private Book book; //Changed 'bOok' to 'book
 	
 	
-	public borrowBookControl() { //Changed 'bORROW_bOOK_cONTROL' to 'borrowBookControl'
+	public BorrowBookControl() { //Changed 'bORROW_bOOK_cONTROL' to 'BorrowBookControl'
 		this.library = Library.getInstance();//Changed 'lIbRaRy' to 'library' & 'GeTiNsTaNcE' to 'getInstance'
 		state = ControlState.INITIALISED; //Changed 'CONTROL_STATE' to 'ControlState' & 'sTaTe' to 'state' 
 	}
@@ -38,7 +38,7 @@ public class BorrowBookControl { //Changed 'bORROW_bOOK_cONTROL' to 'BorrowBookC
 
 		
 	public void swiped(int memberId) { //Changed 'SwIpEd' to 'swiped' & 'mEmBeR_Id' to 'memberId'
-		if (!sTaTe.equals(CONTROL_STATE.READY)) //Changed 'CONTROL_STATE' to 'ControlState' & 'sTaTe' to 'state'
+		if (!state.equals(CONTROL_STATE.READY)) //Changed 'CONTROL_STATE' to 'ControlState' & 'sTaTe' to 'state'
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
 		member = library.getMember(memberId); //Changed 'lIbRaRy' to 'library' & 'mEmBeR' to 'member' & 'mEmBeR_Id' to 'memberId' & 'getMember'
