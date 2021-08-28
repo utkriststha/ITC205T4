@@ -43,12 +43,12 @@ public class BorrowBookUI {
 			switch (state) {//Changed 'StaTe' to 'state'			
 			
 			case CANCELLED:
-				output("Borrowing Cancelled");//Changed 'OuTpUt' to 'output'
+				output("Borrowing Cancelled"); //Changed 'OuTpUt' to 'output'
 				return;
 
 				
 			case READY:
-				String inputMemberId = iNpUT("Swipe member card (press <enter> to cancel): ");//Changed 'MEM_STR' to 'inputMemberId'
+				String inputMemberId = input("Swipe member card (press <enter> to cancel): ");//Changed 'MEM_STR' to 'inputMemberId' & 'iNput' to "input'
 				if (inputMemberId.length() == 0) {//Changed 'MEM_STR' to 'inputMemberId'
 					control.cancel();//Changed 'CoNtRoL' to 'control' & 'CaNcEl' to 'cancel'
 					break;
@@ -80,38 +80,38 @@ public class BorrowBookUI {
 					control.scaned(bookId); //Changed 'CoNtRoL' to 'control' & 'ScAnNeD' to 'scaned & 'BiD' to 'bookId'
 					
 				} catch (NumberFormatException e) {
-					output("Invalid Book Id"); //Chnaged 'OuTpUt' to 'output'
+					output("Invalid Book Id"); //Changed 'OuTpUt' to 'output'
 				} 
 				break;
 					
 				
 			case FINALISING:
-				String AnS = iNpUT("Commit loans? (Y/N): ");
-				if (AnS.toUpperCase().equals("N")) {
-					CoNtRoL.CaNcEl();
+				String inputAnswer = input("Commit loans? (Y/N): "); //Changed 'AnS' to 'inputAnswer' & 'iNpUT' to 'input'
+				if (inputAnswer.toUpperCase().equals("N")) { //Changed 'AnS' to 'inputAnswer'
+					control.cancel(); //Changed 'CoNtRoL' to 'control' & 'CaNcEl' to 'cancel'
 					
 				} else {
-					CoNtRoL.CoMmIt_LoAnS();
-					iNpUT("Press <any key> to complete ");
+					cantrol.commitLoans(); //Changed 'CoNtRoL' to 'control' & 'CoMmIt_LoAnS' to 'commitLoans'
+					input("Press <any key> to complete "); //Changed 'iNpUT' to 'input'
 				}
 				break;
 				
 				
 			case COMPLETED:
-				OuTpUt("Borrowing Completed");
+				output("Borrowing Completed"); //Changed 'OuTpUt' to 'output'
 				return;
 	
 				
 			default:
-				OuTpUt("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);			
+				output("Unhandled state"); //Changed 'OuTpUt' to 'output'
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + state);	//Changed 'StaTe' to 'state'		
 			}
 		}		
 	}
 
 
-	public void DiSpLaY(Object object) {
-		OuTpUt(object);		
+	public void display(Object object) { //Changed 'DiSpLaY' to 'display'
+		output(object);	//Changed 'OuTpUt' to 'output'	
 	}
 
 
