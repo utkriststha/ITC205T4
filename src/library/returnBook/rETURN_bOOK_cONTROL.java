@@ -43,17 +43,17 @@ public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL'
 			ui.display("Book has not been borrowed");// Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display'
 			return;
 		}		
-		CurrENT_loan = lIbRaRy.GeT_LoAn_By_BoOkId(bOoK_iD);	
-		double Over_Due_Fine = 0.0;
-		if (CurrENT_loan.Is_OvEr_DuE()) 
-			Over_Due_Fine = lIbRaRy.CaLcUlAtE_OvEr_DuE_FiNe(CurrENT_loan);
+		currentLoan = library.getLoanByBookId(bookId);	// Changed variable name 'CurrENT_loan' to 'currentLoan', 'lIbRaRy' to 'library','GeT_LoAn_By_BoOkId' to 'getLoanByBookId' and 'bOoK_iD' to 'bookId'
+		double overDueFine = 0.0;// Changed 'Over_Due_Fine' to 'overDueFine'
+		if (currentLoan.isOverDue()) //Changed variable name 'CurrENT_loan' to 'currentLoan' and 'Is_OvEr_DuE' to 'isOverDue'
+			overDueFine = library.calculateOverDueFine(currentLoan);// Changed 'Over_Due_Fine' to 'overDueFine','lIbRaRy' to 'library','CaLcUlAtE_OvEr_DuE_FiNe' to 'calculateOverDueFine' and 'CurrENT_loan' to 'currentLoan'
 		
-		Ui.DiSpLaY("Inspecting");
-		Ui.DiSpLaY(cUrReNt_bOoK.toString());
-		Ui.DiSpLaY(CurrENT_loan.toString());
+		ui.display("Inspecting");//Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display'
+		ui.display(currentBook.toString());//Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display' and 'cUrReNt_bOoK' to 'currentBook'
+		ui.display(currentLoan.toString());//Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display' and 'CurrENT_loan' to 'currentLoan'
 		
-		if (CurrENT_loan.Is_OvEr_DuE()) 
-			Ui.DiSpLaY(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
+		if (currentLoan.isOverDue()) //Changed variable name 'CurrENT_loan' to 'currentLoan' and 'Is_OvEr_DuE' to 'isOverDue'
+			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));// Changed 'Ui' to 'ui', 'DiSpLaY' to 'display and 'Over_Due_Fine' to 'overDueFine'
 		
 		Ui.sEt_sTaTe(ReturnBookUI.uI_sTaTe.INSPECTING);
 		sTaTe = cOnTrOl_sTaTe.INSPECTING;		
