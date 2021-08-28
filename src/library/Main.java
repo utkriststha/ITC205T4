@@ -195,13 +195,15 @@ public class Main {
        }
 
 
-    private static void ADD_BOOK() {
+    private static void addBook() {					// Changed method name 'ADD_BOOK' to 'addBook'.
 		
-        String AuThOr = input("Enter author: ");
-        String TiTlE  = input("Enter title: ");
-        String CaLl_NuMbEr = input("Enter call number: ");
-        Book BoOk = LIB.aDd_BoOk(AuThOr, TiTlE, CaLl_NuMbEr);
-        output("\n" + BoOk + "\n");
+        String author = input("Enter author: ");			// Changed variable name 'AuThOr' to 'author'.
+        String title  = input("Enter title: ");				// Changed variable name 'TiTlE' to 'title'.
+        String callNumber = input("Enter call number: ");		// Changed variable name 'CaLl_NuMbEr' to 'callNumber'.
+        Book book = library.addBook(author, title, callNumber);		/** Changed variable name 'BoOk' to 'book', 'LIB.aDd_BoOk' to 'library.addBook', 
+									    'AuThOr' to 'author', 'TiTlE' to 'title', and 'CaLl_NuMbEr' to 'callNumber'.**/
+       													
+       output("\n" + book + "\n");					// Changed variable name 'BoOk' to 'book'.
 		
     }
 
