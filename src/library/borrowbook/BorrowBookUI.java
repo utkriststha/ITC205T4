@@ -29,9 +29,8 @@ public class BorrowBookUI {
 		System.out.println(object);//Changed 'ObJeCt' to 'object'
 	}
 	
-			//This line needs to checked
-	public void setState(UIState StAtE) {//Changed 'uI_STaTe' to 'UIState' & 'StaTe' to 'state' & 'SeT_StAtE' to 'setState'
-		this.StaTe = StAtE;
+	public void setState(UIState state) {//Changed 'uI_STaTe' to 'UIState' & 'StaTe' to 'state' & 'SeT_StAtE' to 'setState'
+		this.StaTe = StAtE;//Changed 'StaTe' to 'state' & 'StAtE' to 'state'
 	}
 
 	
