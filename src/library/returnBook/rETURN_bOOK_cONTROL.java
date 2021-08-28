@@ -39,8 +39,8 @@ public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL'
 			ui.display"Invalid Book Id");// Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display'
 			return;
 		}
-		if (!cUrReNt_bOoK.iS_On_LoAn()) {
-			Ui.DiSpLaY("Book has not been borrowed");
+		if (!currentBook.isOnLoan()) {// Changed 'cUrReNt_bOoK' to 'currentBook' and 'iS_On_LoAn' to 'isOnLoan'
+			ui.display("Book has not been borrowed");// Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display'
 			return;
 		}		
 		CurrENT_loan = lIbRaRy.GeT_LoAn_By_BoOkId(bOoK_iD);	
