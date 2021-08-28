@@ -74,48 +74,48 @@ public class Main {
 	    while (!e) {
 				
 	        output("\n" + simpleDateFormat.format(calendar.getDate()));	// Changed variable name 'SDF' to 'simpleDateFormat', 'CAL' to 'calendar' and 'gEt_DaTe' to 'getDate'.
-		String c = input(MENU);
+		String choice = input(menu);					// Changed variable name 'c' to 'choice' and 'MENU' to 'menu'.
 				
-	        switch (c.toUpperCase()) {
+	        switch (choice.toUpperCase()) {					// Changed variable name 'c' to 'choice'.
 				
 		case "M": 
-		    ADD_MEMBER();
+		    addMember();						// Changed method name 'ADD_MEMBER' to 'addMember'
 		    break;
 					
 		case "LM": 
-		    LIST_MEMBERS();
+		    listMembers();						// Changed method name 'LIST_MEMBERS' to 'listMembers'
 		    break;
 					
 		case "B": 
-		    ADD_BOOK();
+		    addBook();							// Changed method name 'ADD_BOOK' to 'addBook'
 		    break;
 					
 		case "LB": 
-		    LIST_BOOKS();
+		    listBooks();						// Changed method name 'LIST_BOOKS' to 'listBooks'
 		    break;
 					
 		case "FB": 
-		    FIX_BOOKS();
+		    fixBooks();							// Changed method name 'FIX_BOOKS' to 'fixBooks'
 		    break;
 					
 		case "L": 
-		    BORROW_BOOK();
+		    borrowBook();						// Changed method name 'BORROW_BOOK' to 'borrowBook'
 		    break;
 					
 		case "R": 
-		    RETURN_BOOK();
+		    returnBook();						// Changed method name 'RETURN_BOOK' to 'returnBook'
 		    break;
 					
-		case "LL": 
-		    LIST_CURRENT_LOANS();
-		    break;
+		case "LL": 	
+		    listCurrentLoans();						// Changed method name 'LIST_CURRENT_LOANS' to 'listCurrentLoans'
+		    break;		
 					
 		case "P": 
-		    PAY_FINES();
+		    payFines();							// Changed method name 'PAY_FINES' to 'payFines'
 		    break;
 					
 		case "T": 
-		    INCREMENT_DATE();
+		    incrementDate();						// Changed method name 'INCREMENT_DATE' to 'incrementDate'
 		    break;
 					
 		case "Q": 
