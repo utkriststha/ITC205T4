@@ -37,7 +37,7 @@ public class BorrowBookControl { //Changed 'bORROW_bOOK_cONTROL' to 'BorrowBookC
 
 
     public void swiped(int memberId) { //Changed 'SwIpEd' to 'swiped' & 'mEmBeR_Id' to 'memberId'
-        if (!state.equals(CONTROL_STATE.READY)) //Changed 'CONTROL_STATE' to 'ControlState' & 'sTaTe' to 'state'
+        if (!state.equals(ConstrolState.READY)) //Changed 'CONTROL_STATE' to 'ControlState' & 'sTaTe' to 'state'
             throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 
         member = library.getMember(memberId); //Changed 'lIbRaRy' to 'library' & 'mEmBeR' to 'member' & 'mEmBeR_Id' to 'memberId' & 'getMember'
@@ -45,7 +45,7 @@ public class BorrowBookControl { //Changed 'bORROW_bOOK_cONTROL' to 'BorrowBookC
             ui.display("Invalid memberId"); //Changed 'uI' to 'ui' & 'DiSpLaY' to 'display'
             return;
         }
-        if (library.camMemberBorrow(member)) { //Changed 'lIbRaRy' to 'library' & 'mEmBeR' to 'member' & 'canMemberBorrow'
+        if (library.canMemberBorrow(member)) { //Changed 'lIbRaRy' to 'library' & 'mEmBeR' to 'member' & 'canMemberBorrow'
             pendingList = new ArrayList<>();//Changed 'pEnDiNg_LiSt' to 'pendingList'
             ui.setState(BorrowBookUI.UIState.SCANNING);//Changed 'uI' to 'ui' & 'SeT_StAtE' to 'setState' & 'uI_STaTe' to 'UIState'
             state = ControlState.SCANNING; //Changed 'CONTROL_STATE' to 'ControlState' & 'sTaTe' to 'state'
