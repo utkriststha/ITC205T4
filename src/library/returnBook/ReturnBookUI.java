@@ -51,15 +51,15 @@ public class ReturnBookUI {
 				if (ans.toUpperCase().equals("Y")) //Changed variable name 'AnS' to 'ans' 			
 					isDamaged = true;//Changed 'Is_DAmAgEd ' to 'isDamaged'
 				
-				CoNtRoL.dIsChArGe_lOaN(Is_DAmAgEd);
+				control.dischargeLoan(isDamaged);// Changed 'CoNtRoL' to 'control', 'dIsChArGe_lOaN' to 'dischargeLoan' and 'Is_DAmAgEd' to 'isDamaged'
 			
 			case COMPLETED:
-				oUtPuT("Return processing complete");
+				output("Return processing complete");//Changed method name 'oUtPuT' to 'output'
 				return;
 			
 			default:
-				oUtPuT("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + StATe);			
+				output("Unhandled state");//Changed method name 'oUtPuT' to 'output'
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);	//Changed 'StATe' to 'state'		
 			}
 		}
 	}
