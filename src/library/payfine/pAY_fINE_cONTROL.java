@@ -4,52 +4,52 @@ import library.entities.Member;
 
 public class PayFineControl { // changed class name 'pAY_fINE_cONTROL' to 'PayFineControl'
     // Changed indentation from 8 spaces from 4 spaces	
-    private PayFineUI UI; // changed class name 'PayFineUI' to 'PayFineUI'
+    private payFineUI UI; // changed class name 'PayFineUI' to 'payFineUI'
     private enum controlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; // changed method name 'cOnTrOl_sTaTe' to 'controlState'
-    private controlState State; // changed class name 'cOnTrOl_sTaTe' to 'controlState' , 'StAtE' to ' State'
+    private ControlState State; // changed class name 'cOnTrOl_sTaTe' to 'ControlState' , 'StAtE' to ' State'
 	
     private Library libary; // changed variable name 'LiBrArY' to 'libary'
     private Member member; // changed variable name 'MeMbEr' to 'member'
 
 
     public PayFineControl() { // changed class name 'pAY_fINE_cONTROL' to 'PayFineControl'
-	    this.Libary = library.getInstance(); // changed variable name 'this.LiBrArY' to 'this.Libary' , 'Library.GeTiNsTaNcE' to 'library.getInstance'
-	    state = controlState.INITIALISED; // changed variable name 'StAtE ' to 'state', 'cOnTrOl_sTaTe' to 'controlState'
+	    this.libary = library.getInstance(); // changed variable name 'this.LiBrArY' to 'this.libary' , 'Library.GeTiNsTaNcE' to 'library.getInstance'
+	    state = ControlState.INITIALISED; // changed variable name 'StAtE ' to 'state'
 	    }
 	
 	
-    public void SeT_uI(PayFineUI UI) { // changed method name 'SeT_uI' to 'setUI' , 'PayFineUI uI' to 'payFineUI' , 'uI' to 'UI'
-	    if (!state.Equals(controlState.INITIALISED)) { // changed variable name 'StAtE.equals' to 'state.Equals' , 'cOnTrOl_sTaTe' to 'controlState'
+    public void setUI(PayFineUI UI) { // changed method name 'SeT_uI' to 'setUI' , 'PayFineUI uI' to 'payFineUI' , 'uI' to 'UI'
+	    if (!state.equals(controlState.INITIALISED)) { // changed variable name 'StAtE.equals' to 'state.equals' , 'cOnTrOl_sTaTe' to 'controlState'
 		  throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state"); 
 		  }	
-	    this.UI = UI; // changed variable name 'this.Ui' to 'this.UI' , 'uI' to 'UI'
-	    UI.setState(PayFineUI.UIState.READY); // changed variable name 'uI.SeT_StAtE' to 'UI.setState' , 'PayFineUI.uI_sTaTe.READY' to 'PayFineUI' to 'PayFineUI.UIState.READY
-	    state = controlState.READY;	// changed variable name 'StAtE' to 'state'. 'cOnTrOl_sTaTe' to 'controlState'	
+	    this.ui = ui; // changed variable name 'this.Ui' to 'this.ui' , 'uI' to 'ui'
+	    ui.setState(PayFineUI.uiState.READY); // changed variable name 'uI.SeT_StAtE' to 'ui.setState' , 'PayFineUI.uI_sTaTe.READY'  to 'PayFineUI.uiState.READY
+	    State = controlState.READY;	// changed variable name 'StAtE' to 'State'. 'cOnTrOl_sTaTe' to 'controlState'	
 	}
 
-	public void CaRd_sWiPeD(int MeMbEr_Id) {
-		if (!StAtE.equals(cOnTrOl_sTaTe.READY)) 
+    public void cardSwiped(int memberId) { // changed method name 'CaRd_sWiPeD' to 'cardSwiped' and 'MeMbEr_Id' to 'memberId'
+		 if (!state.equals(controlState.READY)) // changed variable name 'StAtE.equals' to 'state.equals' , 'cOnTrOl_sTaTe' to 'controlState
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 			
-		MeMbEr = LiBrArY.gEt_MeMbEr(MeMbEr_Id);
+           member = library.getMember(memberId); // changed variable name 'MeMbEr' to 'member' and 'LiBrArY.gEt_MeMbEr' to 'library.getMember' and 'MeMbEr_Id' to 'memberId'
 		
-		if (MeMbEr == null) {
-			Ui.DiSplAY("Invalid Member Id");
+		if (member == null) { // changed variable name 'MeMbEr' to 'member'
+			ui.display("Invalid Member Id"); // changed variable name 'Ui.DiSplAY' to 'ui.display'
 			return;
 		}
-		Ui.DiSplAY(MeMbEr.toString());
-		Ui.SeT_StAtE(PayFineUI.uI_sTaTe.PAYING);
-		StAtE = cOnTrOl_sTaTe.PAYING;
+		ui.display(member.toString()); // changed variable name 'Ui.DiSplAY' to 'ui.display' and 'MeMbEr.toString' to 'member.toString'
+		ui.setState(PayFineUI.uiState.PAYING); // changed variable name 'uI.SeT_StAtE' to 'ui.setState' , 'PayFineUI.uI_sTaTe.PAYING'  to 'PayFineUI.uiState.PAYING'
+		state = controlState.PAYING; // CHANGED variable name 'StAtE' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
 	}
 	
 	
-	public void CaNcEl() {
+    public void CaNcEl() {
 		Ui.SeT_StAtE(PayFineUI.uI_sTaTe.CANCELLED);
 		StAtE = cOnTrOl_sTaTe.CANCELLED;
 	}
 
 
-	public double PaY_FiNe(double AmOuNt) {
+    public double PaY_FiNe(double AmOuNt) {
 		if (!StAtE.equals(cOnTrOl_sTaTe.PAYING)) 
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 			

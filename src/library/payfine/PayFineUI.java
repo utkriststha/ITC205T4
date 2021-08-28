@@ -9,7 +9,7 @@ public class PayFineUI {
 
     private PayFineControl control; //changed class name 'pAY_fINE_cONTROL' to 'PayFineControl' , 'CoNtRoL' to 'control'
     private Scanner input;
-    private uI_sTaTe StAtE; //changed class name 'uI_sTaTe' to 'UIState' , 'StAtE' 'state'
+    private UIState state; //changed class name 'uI_sTaTe' to 'UIState' , 'StAtE' 'state'
 
 	
     public PayFineUI(PayFineControl control) { //changed class name 'pAY_fINE_cONTROL' to 'PayFineControl'
@@ -20,42 +20,42 @@ public class PayFineUI {
 	}
 	
 	
-    public void setState(uI_sTaTe state) { // chnaged method name 'SeT_StAtE' to 'setState' and 'uI_sTaTe' to 'UIState'
+    public void setState(UIState state) { // chnaged method name 'SeT_StAtE' to 'setState' and 'uI_sTaTe' to 'UIState'
 	this.state = state; // changed variable name 'this.StAtE' to 'this.state'
 	}
 
 
-	public void RuN() {
+    public void run() { // changed method name 'RuN' to 'run'
 		output("Pay Fine Use Case UI\n");
 		
-		while (true) {
+	while (true) {
 			
-			switch (StAtE) {
+		switch (state) { // changed variable name 'StAtE' to 'state'
 			
-			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
-					break;
-				}
-				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					CoNtRoL.CaRd_sWiPeD(Member_ID);
-				}
-				catch (NumberFormatException e) {
-					output("Invalid memberId");
-				}
-				break;
+		case READY:
+		String memberString = input("Swipe member card (press <enter> to cancel): "); // changed variable name 'Mem_Str' to 'memberString'
+		if (memberString.length() == 0) { // changed variable name 'Mem_Str.length' to 'memberString.length'
+		   control.CaNcEl(); // changed variable name 'CoNtRoL' to 'control'
+			break;
+			}
+			try {
+			int memberId = Integer.valueOf(memberString).intValue(); // changed variable name 'Member_ID' to 'memberId'
+					control.cardSwiped(memberId); // changed variable name 'CoNtRoL.CaRd_sWiPeD' to 'control.cardSwiped'
+			}
+			catch (NumberFormatException e) {
+				output("Invalid memberId");
+			}
+			break;
 				
-			case PAYING:
-				double AmouNT = 0;
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
-					break;
-				}
-				try {
-					AmouNT = Double.valueOf(Amt_Str).doubleValue();
+		case PAYING:
+			double amount = 0; // changed variable name 'AmouNT' to 'amount'
+			String amountString = input("Enter amount (<Enter> cancels) : "); // changed variable name 'Amt_Str' to 'amountString'
+			if (amountString.length() == 0) {
+				control.cancel(); // changed variable name 'CoNtRoL.CaNcEl' to 'control.cancel'
+				break;
+			}
+			try {
+				amount = Double.valueOf(amountString).doubleValue(); // changed variable name 'AmouNT' to 'amount' and 'Amt_Str' to 'amountString'
 				}
 				catch (NumberFormatException e) {}
 				if (AmouNT <= 0) {
