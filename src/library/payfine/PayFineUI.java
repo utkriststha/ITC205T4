@@ -28,34 +28,34 @@ public class PayFineUI {
     public void run() { // changed method name 'RuN' to 'run'
 		output("Pay Fine Use Case UI\n");
 		
-		while (true) {
+	while (true) {
 			
-			switch (state) { // changed variable name 'StAtE' to 'state'
+		switch (state) { // changed variable name 'StAtE' to 'state'
 			
-			case READY:
-				String memberString = input("Swipe member card (press <enter> to cancel): "); // changed variable name 'Mem_Str' to 'memberString'
-				if (memberString.length() == 0) { // changed variable name 'Mem_Str.length' to 'memberString.length'
-					control.CaNcEl(); // changed variable name 'CoNtRoL' to 'control'
-					break;
-				}
-				try {
-					int memberId = Integer.valueOf(memberString).intValue(); // changed variable name 'Member_ID' to 'memberId'
+		case READY:
+		String memberString = input("Swipe member card (press <enter> to cancel): "); // changed variable name 'Mem_Str' to 'memberString'
+		if (memberString.length() == 0) { // changed variable name 'Mem_Str.length' to 'memberString.length'
+		   control.CaNcEl(); // changed variable name 'CoNtRoL' to 'control'
+			break;
+			}
+			try {
+			int memberId = Integer.valueOf(memberString).intValue(); // changed variable name 'Member_ID' to 'memberId'
 					control.cardSwiped(memberId); // changed variable name 'CoNtRoL.CaRd_sWiPeD' to 'control.cardSwiped'
-				}
-				catch (NumberFormatException e) {
-					output("Invalid memberId");
-				}
-				break;
+			}
+			catch (NumberFormatException e) {
+				output("Invalid memberId");
+			}
+			break;
 				
-			case PAYING:
-				double amount = 0; // changed variable name 'AmouNT' to 'amount'
-				String amountString = input("Enter amount (<Enter> cancels) : "); // changed variable name 'Amt_Str' to 'amountString'
-				if (amountString.length() == 0) {
-					control.cancel(); // changed variable name 'CoNtRoL.CaNcEl' to 'control.cancel'
-					break;
-				}
-				try {
-					amount = Double.valueOf(amountString).doubleValue(); // changed variable name 'AmouNT' to 'amount' and 'Amt_Str' to 'amountString'
+		case PAYING:
+			double amount = 0; // changed variable name 'AmouNT' to 'amount'
+			String amountString = input("Enter amount (<Enter> cancels) : "); // changed variable name 'Amt_Str' to 'amountString'
+			if (amountString.length() == 0) {
+				control.cancel(); // changed variable name 'CoNtRoL.CaNcEl' to 'control.cancel'
+				break;
+			}
+			try {
+				amount = Double.valueOf(amountString).doubleValue(); // changed variable name 'AmouNT' to 'amount' and 'Amt_Str' to 'amountString'
 				}
 				catch (NumberFormatException e) {}
 				if (AmouNT <= 0) {
