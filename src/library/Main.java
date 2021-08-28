@@ -158,38 +158,38 @@ public class Main {
 
 
 
-    private static void LIST_MEMBERS() {
+    private static void listMembers() {						// Changed method name 'LIST_MEMBERS' to 'listMembers'.
 	output("");
-	for (Member member : LIB.lIsT_MeMbErS()) {
+	for (Member member : library.listMembers()) {				// Changed method name 'LIB' to 'library' and 'LIST_MEMBERS' to 'listMembers'.
 	    output(member + "\n");
 	}		
     }
 
 
 
-    private static void BORROW_BOOK() {
-	new BorrowBookUI(new bORROW_bOOK_cONTROL()).RuN();		
+    private static void borrowBook() {						// Changed method name 'BORROW_BOOK' to 'borrowBook'.
+	new BorrowBookUI(new BorrowBookControl()).run();			// Changed method name 'bORROW_bOOK_cONTROL' to 'BorrowBookControl' and 'RuN' to 'run'.
     }
 
 
-    private static void RETURN_BOOK() {
-	new ReturnBookUI(new rETURN_bOOK_cONTROL()).RuN();		
+    private static void returnBook() {						// Changed method name 'RETURN_BOOK' to 'returnBook'.
+	new ReturnBookUI(new ReturnBookControl()).run();			// Changed method name 'rETURN_bOOK_cONTROL' to 'ReturnBookControl' and 'RuN' to 'run'.
     }
 
 
-    private static void FIX_BOOKS() {
-	new FixBookUI(new fIX_bOOK_cONTROL()).RuN();		
+    private static void fixBooks() {						// Changed method name 'FIX_BOOKS' to 'fixBooks'.
+	new FixBookUI(new FixBookControl()).run();				// Changed method name 'fIX_bOOK_cONTROL' to 'FixBookControl' and 'RuN' to 'run'.
     }
 
 
-    private static void INCREMENT_DATE() {
+    private static void incrementDate() {						// Changed method name 'INCREMENT_DATE' to 'incrementDate'.
 	try {
 	    int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-	    CAL.incrementDate(days);
-	    LIB.cHeCk_CuRrEnT_LoAnS();
-	    output(SDF.format(CAL.gEt_DaTe()));
+	    calendar.incrementDate(days);						// Changed method name 'CAL' to 'calendar'.
+	    library.checkCurrentLoans();						// Changed method name 'LIB' to 'library' and 'cHeCk_CuRrEnT_LoAnS' to 'checkCurrentLoans'.
+	    output(simpleDateFormat.format(calendar.getDate()));			// Changed method name 'SDF' to 'simpleDateFormat' and 'CAL.gEt_DaTe' to 'calendar.getDate'.
 			
-	} catch (NumberFormatException e) {
+	} catch (NumberFormatException exception) {					// Changed variable name 'e' to 'exception'.
 	     output("\nInvalid number of days\n");
 	}
        }
