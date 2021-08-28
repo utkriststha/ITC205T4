@@ -4,83 +4,83 @@ import java.util.Scanner;
 
 public class BorrowBookUI {
 	
-	public static enum uI_STaTe { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
+	public static enum UIState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };//Changed 'uI_STaTe' to 'UIState'
 
-	private bORROW_bOOK_cONTROL CoNtRoL;
-	private Scanner InPuT;
-	private uI_STaTe StaTe;
+	private BorrowBookControl control; //Changed 'bORROW_bOOK_cONTROL' to 'BorrowBookControl' & 'CoNtRoL' to 'control'
+	private Scanner input;//Changed 'InPuT' to 'input'
+	private UIState state;//Changed 'uI_STaTe' to 'UIState' & 'StaTe' to 'state'
 
 	
-	public BorrowBookUI(bORROW_bOOK_cONTROL control) {
-		this.CoNtRoL = control;
-		InPuT = new Scanner(System.in);
-		StaTe = uI_STaTe.INITIALISED;
-		control.SeT_Ui(this);
+	public BorrowBookUI(BorrowBookControl control) { //Changed 'bORROW_bOOK_cONTROL' to 'BorrowBookControl'
+		this.control = control; //Changed 'CoNtRoL' to 'control'
+		input = new Scanner(System.in); //Changed 'InPuT' to 'input'
+		state = UIState.INITIALISED; //Changed 'uI_STaTe' to 'UIState' & 'StaTe' to 'state'
+		control.setUI(this);//Changed 'SeT_Ui' to 'setUI'
 	}
 
 	
-	private String iNpUT(String PrOmPt) {
-		System.out.print(PrOmPt);
-		return InPuT.nextLine();
+	private String input(String prompt) {//Change 'iNpUT' to 'input' & 'PrOmPt' to 'prompt'
+		System.out.print(prompt);//Changed 'PrOmPt' to 'prompt'
+		return input.nextLine();//Change 'iNpUT' to 'input'
 	}	
 		
 		
-	private void OuTpUt(Object ObJeCt) {
-		System.out.println(ObJeCt);
+	private void output(Object object) {//Changed 'OuTpUt' to 'output' & 'ObJeCt' to 'object'
+		System.out.println(object);//Changed 'ObJeCt' to 'object'
 	}
 	
-			
-	public void SeT_StAtE(uI_STaTe StAtE) {
+			//This line needs to checked
+	public void setState(UIState StAtE) {//Changed 'uI_STaTe' to 'UIState' & 'StaTe' to 'state' & 'SeT_StAtE' to 'setState'
 		this.StaTe = StAtE;
 	}
 
 	
-	public void RuN() {
-		OuTpUt("Borrow Book Use Case UI\n");
+	public void run() {//Changed 'RuN' to 'run'
+		output("Borrow Book Use Case UI\n");//Changed 'OuTpUt' to 'output'
 		
 		while (true) {
 			
-			switch (StaTe) {			
+			switch (state) {//Changed 'StaTe' to 'state'			
 			
 			case CANCELLED:
-				OuTpUt("Borrowing Cancelled");
+				output("Borrowing Cancelled");//Changed 'OuTpUt' to 'output'
 				return;
 
 				
 			case READY:
-				String MEM_STR = iNpUT("Swipe member card (press <enter> to cancel): ");
-				if (MEM_STR.length() == 0) {
-					CoNtRoL.CaNcEl();
+				String inputMemberId = iNpUT("Swipe member card (press <enter> to cancel): ");//Changed 'MEM_STR' to 'inputMemberId'
+				if (inputMemberId.length() == 0) {//Changed 'MEM_STR' to 'inputMemberId'
+					control.cancel();//Changed 'CoNtRoL' to 'control' & 'CaNcEl' to 'cancel'
 					break;
 				}
 				try {
-					int MeMbEr_Id = Integer.valueOf(MEM_STR).intValue();
-					CoNtRoL.SwIpEd(MeMbEr_Id);
+					int memberId = Integer.valueOf(inputMemberId).intValue();//Changed 'MeMbEr_Id' to 'memberId' & 'MEM_STR' to 'inputMemberId'
+					control.swiped(memberId);//Changed 'MeMbEr_Id' to 'memberId' & 'CoNtRoL' to 'control' & 'SwIpEd' to 'swiped'
 				}
 				catch (NumberFormatException e) {
-					OuTpUt("Invalid Member Id");
+					output("Invalid Member Id");//Chnaged 'OuTpUt' to 'output' 
 				}
 				break;
 
 				
 			case RESTRICTED:
-				iNpUT("Press <any key> to cancel");
-				CoNtRoL.CaNcEl();
+				input("Press <any key> to cancel"); //Change 'iNpUT' to 'input'
+				control.cancel(); //Changed 'CoNtRoL' to 'control' & 'CaNcEl' to 'cancel'
 				break;
 			
 				
 			case SCANNING:
-				String BoOk_StRiNg_InPuT = iNpUT("Scan Book (<enter> completes): ");
-				if (BoOk_StRiNg_InPuT.length() == 0) {
-					CoNtRoL.CoMpLeTe();
+				String bookStringInput = input("Scan Book (<enter> completes): "); //Change 'iNpUT' to 'input' & 'BoOk_StRiNg_InPuT' to 'bookStringInput'
+				if (bookStringInput.length() == 0) {//Changed 'BoOk_StRiNg_InPuT' to 'bookStringInput'
+					control.complete(); //Changed 'CoNtRoL' to 'control' & 'CoMpLeTe' to 'complete'
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(BoOk_StRiNg_InPuT).intValue();
-					CoNtRoL.ScAnNeD(BiD);
+					int bookId = Integer.valueOf(bookStringInput).intValue();//Changed 'BoOk_StRiNg_InPuT' to 'bookStringInput' & 'BiD' to 'bookId'
+					control.scaned(bookId); //Changed 'CoNtRoL' to 'control' & 'ScAnNeD' to 'scaned & 'BiD' to 'bookId'
 					
 				} catch (NumberFormatException e) {
-					OuTpUt("Invalid Book Id");
+					output("Invalid Book Id"); //Chnaged 'OuTpUt' to 'output'
 				} 
 				break;
 					
