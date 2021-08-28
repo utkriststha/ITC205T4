@@ -30,7 +30,7 @@ public class BorrowBookUI {
 	}
 	
 	public void setState(UIState state) {//Changed 'uI_STaTe' to 'UIState' & 'StaTe' to 'state' & 'SeT_StAtE' to 'setState'
-		this.StaTe = StAtE;//Changed 'StaTe' to 'state' & 'StAtE' to 'state'
+		this.state = state;//Changed 'StaTe' to 'state' & 'StAtE' to 'state'
 	}
 
 	
@@ -76,7 +76,7 @@ public class BorrowBookUI {
 				}
 				try {
 					int bookId = Integer.valueOf(bookStringInput).intValue();//Changed 'BoOk_StRiNg_InPuT' to 'bookStringInput' & 'BiD' to 'bookId'
-					control.scaned(bookId); //Changed 'CoNtRoL' to 'control' & 'ScAnNeD' to 'scaned & 'BiD' to 'bookId'
+					control.scanned(bookId); //Changed 'CoNtRoL' to 'control' & 'ScAnNeD' to 'scanned & 'BiD' to 'bookId'
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id"); //Changed 'OuTpUt' to 'output'
@@ -90,7 +90,7 @@ public class BorrowBookUI {
 					control.cancel(); //Changed 'CoNtRoL' to 'control' & 'CaNcEl' to 'cancel'
 					
 				} else {
-					cantrol.commitLoans(); //Changed 'CoNtRoL' to 'control' & 'CoMmIt_LoAnS' to 'commitLoans'
+					control.commitLoans(); //Changed 'CoNtRoL' to 'control' & 'CoMmIt_LoAnS' to 'commitLoans'
 					input("Press <any key> to complete "); //Changed 'iNpUT' to 'input'
 				}
 				break;
