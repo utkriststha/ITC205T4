@@ -208,16 +208,19 @@ public class Main {
     }
 
 	
-    private static void ADD_MEMBER() {
+    private static void addMember() {					// Changed method name 'ADD_MEMBER' to 'addMember'.
 	try {
-	    String LaSt_NaMe = input("Enter last name: ");
-	    String FiRsT_NaMe  = input("Enter first name: ");
-	    String EmAiL_AdDrEsS = input("Enter email address: ");
-	    int PhOnE_NuMbEr = Integer.valueOf(input("Enter phone number: ")).intValue();
-	    Member MeMbEr = LIB.aDd_MeMbEr(LaSt_NaMe, FiRsT_NaMe, EmAiL_AdDrEsS, PhOnE_NuMbEr);
-	    output("\n" + MeMbEr + "\n");
+	    String lastName = input("Enter last name: ");		// Changed variable name 'LaSt_NaMe' to 'lastName'.
+	    String firstName  = input("Enter first name: ");		// Changed variable name 'FiRsT_NaMe' to 'firstName'.
+	    String emailAddress = input("Enter email address: ");	// Changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'.
+	    int phoneNumber = Integer.valueOf(input("Enter phone number: ")).intValue();		// Changed variable name 'PhOnE_NuMbEr' to 'phoneNumber'.
+	    Member member = library.addMember(lastName, firstName, emailAddress, phoneNumber);		/** Changed variable name 'MeMbEr' to 'member', 'LIB.aDd_MeMbEr' to 'library.addMember', 
+									    				'LaSt_NaMe' to 'lastName', 'FiRsT_NaMe' to 'firstName', 'EmAiL_AdDrEsS' to 'emailAddress'
+													and 'PhOnE_NuMbEr' to 'phoneNumber'.**/
+		
+	    output("\n" + member + "\n");		// Changed variable name 'MeMbEr' to 'member'.
 			
-	} catch (NumberFormatException e) {
+	} catch (NumberFormatException exception) {	// Changed variable name 'e' to 'exception'.
 	    output("\nInvalid phone number\n");
 	}
 		
@@ -226,7 +229,7 @@ public class Main {
 
     private static String input(String prompt) {
 	System.out.print(prompt);
-	return IN.nextLine();
+	return input.nextLine();				// Changed variable name 'IN' to 'input'.
     }
 	
 	
