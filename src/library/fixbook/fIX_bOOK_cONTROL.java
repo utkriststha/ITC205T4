@@ -12,7 +12,7 @@ public class FixBookControl { 	// Changed class name 'fIX_bOOK_cONTROL' to 'FixB
     private Book currentBook;						// Changed variable name 'CuRrEnT_BoOk' to 'currentBook'.
 
 
-    public fixBookControl() {						// Changed method name 'fIX_bOOK_cONTROL' to 'fixBookControl'.
+    public FixBookControl() {						// Changed method name 'fIX_bOOK_cONTROL' to 'FixBookControl'.
 	this.library = Library.getInstance();				// Changed variable name 'LiBrArY' to 'library' and 'GeTiNsTaNcE()' to 'getInstance()'.
 	state = ControlState.INITIALISED;				// Changed class name 'CoNtRoL_StAtE' to 'ControlState' and 'StAtE' to 'state'.
     }
@@ -43,7 +43,7 @@ public class FixBookControl { 	// Changed class name 'fIX_bOOK_cONTROL' to 'FixB
 	    return;
 	}
 		ui.display(currentBook.toString());		// Changed variable name 'Ui.dIsPlAy' to 'ui.display'and 'CuRrEnT_BoOk' to 'currentBook'.
-		ui.setState(FixBookUI.uiState.FIXING);		// Changed variable name 'Ui.SeT_StAtE' to 'ui.setState'and 'uI_sTaTe' to 'uiState'.
+		ui.setState(FixBookUI.UIState.FIXING);		// Changed variable name 'Ui.SeT_StAtE' to 'ui.setState'and 'uI_sTaTe' to 'UIState'.
 		state = ControlState.FIXING;			// Changed variable name 'StAtE' to 'state'and 'CoNtRoL_StAtE' to 'ControlState'.
 	}
 
@@ -54,7 +54,7 @@ public class FixBookControl { 	// Changed class name 'fIX_bOOK_cONTROL' to 'FixB
 	if (mustFix) 						// Changed variable name 'mUsT_FiX' to 'mustFix'.
 	    library.repairBook(currentBook);			// Changed variable name ' LiBrArY.RePaIr_BoOk' to 'library.repairBook'and 'CuRrEnT_BoOk' to 'currentBook'.
 	    currentBook = null;					// Changed variable name 'CuRrEnT_BoOk' to 'currentBook'.
-	    ui.setState(FixBookUI.uiState.READY);		// Changed method name 'Ui.SeT_StAtE' to 'ui.setState'and 'uI_sTaTe' to 'uiState'.
+	    ui.setState(FixBookUI.UIState.READY);		// Changed method name 'Ui.SeT_StAtE' to 'ui.setState'and 'uI_sTaTe' to 'UIState'.
 	    state = ControlState.READY;				// Changed variable name 'StAtE' to 'state'and 'CoNtRoL_StAtE' to 'ControlState'.
     }
 
@@ -63,7 +63,7 @@ public class FixBookControl { 	// Changed class name 'fIX_bOOK_cONTROL' to 'FixB
 	if (!state.equals(ControlState.READY)) 			// Changed variable name 'StAtE' to 'state'and 'CoNtRoL_StAtE' to 'ControlState'.
 	    throw new RuntimeException("FixBookControl: cannot call scanningComplete except in READY state");
 			
-	ui.setState(FixBookUI.uiState.COMPLETED);		// Changed method name 'Ui.SeT_StAtE' to 'ui.setState'and 'uI_sTaTe' to 'uiState'.
+	ui.setState(FixBookUI.UIState.COMPLETED);		// Changed method name 'Ui.SeT_StAtE' to 'ui.setState'and 'uI_sTaTe' to 'uiState'.
     }
 
 }
