@@ -27,11 +27,11 @@ public class PayFineControl { // changed class name 'pAY_fINE_cONTROL' to 'PayFi
 	    State = controlState.READY;	// changed variable name 'StAtE' to 'State'. 'cOnTrOl_sTaTe' to 'controlState'	
 	}
 
-	public void cardSwiped(int memberId) { // changed method name 'CaRd_sWiPeD' to 'cardSwiped' and 'MeMbEr_Id' to 'memberId'
+    public void cardSwiped(int memberId) { // changed method name 'CaRd_sWiPeD' to 'cardSwiped' and 'MeMbEr_Id' to 'memberId'
 		 if (!state.equals(controlState.READY)) // changed variable name 'StAtE.equals' to 'state.equals' , 'cOnTrOl_sTaTe' to 'controlState
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 			
-		member = library.getMember(memberId); // changed variable name 'MeMbEr' to 'member' and 'LiBrArY.gEt_MeMbEr' to 'library.getMember' and 'MeMbEr_Id' to 'memberId'
+           member = library.getMember(memberId); // changed variable name 'MeMbEr' to 'member' and 'LiBrArY.gEt_MeMbEr' to 'library.getMember' and 'MeMbEr_Id' to 'memberId'
 		
 		if (member == null) { // changed variable name 'MeMbEr' to 'member'
 			ui.display("Invalid Member Id"); // changed variable name 'Ui.DiSplAY' to 'ui.display'
@@ -43,13 +43,13 @@ public class PayFineControl { // changed class name 'pAY_fINE_cONTROL' to 'PayFi
 	}
 	
 	
-	public void CaNcEl() {
+    public void CaNcEl() {
 		Ui.SeT_StAtE(PayFineUI.uI_sTaTe.CANCELLED);
 		StAtE = cOnTrOl_sTaTe.CANCELLED;
 	}
 
 
-	public double PaY_FiNe(double AmOuNt) {
+    public double PaY_FiNe(double AmOuNt) {
 		if (!StAtE.equals(cOnTrOl_sTaTe.PAYING)) 
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 			
