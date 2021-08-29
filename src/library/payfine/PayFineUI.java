@@ -32,8 +32,8 @@ public class PayFineUI {
 			
 		switch (state) { // changed variable name 'StAtE' to 'state'
 			
-		case READY:
-		String memberString = input("Swipe member card (press <enter> to cancel): "); // changed variable name 'Mem_Str' to 'memberString'
+	 case READY:
+	 String memberString = input("Swipe member card (press <enter> to cancel): "); // changed variable name 'Mem_Str' to 'memberString'
 		if (memberString.length() == 0) { // changed variable name 'Mem_Str.length' to 'memberString.length'
 		   control.CaNcEl(); // changed variable name 'CoNtRoL' to 'control'
 			break;
@@ -47,38 +47,38 @@ public class PayFineUI {
 			}
 			break;
 				
-		case PAYING:
-			double amount = 0; // changed variable name 'AmouNT' to 'amount'
-			String amountString = input("Enter amount (<Enter> cancels) : "); // changed variable name 'Amt_Str' to 'amountString'
-			if (amountString.length() == 0) {
-				control.cancel(); // changed variable name 'CoNtRoL.CaNcEl' to 'control.cancel'
+	case PAYING:
+		double amount = 0; // changed variable name 'AmouNT' to 'amount'
+		String amountString = input("Enter amount (<Enter> cancels) : "); // changed variable name 'Amt_Str' to 'amountString'
+		if (amountString.length() == 0) {
+			control.cancel(); // changed variable name 'CoNtRoL.CaNcEl' to 'control.cancel'
+			break;
+		}
+		try {
+			amount = Double.valueOf(amountString).doubleValue(); // changed variable name 'AmouNT' to 'amount' and 'Amt_Str' to 'amountString'
+			}
+			catch (NumberFormatException e) {}
+			if (amount <= 0) { // changed variable name 'AmouNT' to 'amount'
+				output("Amount must be positive");
 				break;
 			}
-			try {
-				amount = Double.valueOf(amountString).doubleValue(); // changed variable name 'AmouNT' to 'amount' and 'Amt_Str' to 'amountString'
-				}
-				catch (NumberFormatException e) {}
-				if (amount <= 0) { // changed variable name 'AmouNT' to 'amount'
-					output("Amount must be positive");
-					break;
-				}
-				control.payFine(amount); // chnaged variable name 'CoNtRoL.PaY_FiNe' to 'control.payFine'
-				break;
+			control.payFine(amount); // chnaged variable name 'CoNtRoL.PaY_FiNe' to 'control.payFine'
+			break;
 								
-			case CANCELLED:
-				output("Pay Fine process cancelled");
-				return;
+		case CANCELLED:
+			output("Pay Fine process cancelled");
+			return;
 			
-			case COMPLETED:
-				output("Pay Fine process complete");
-				return;
+		case COMPLETED:
+			output("Pay Fine process complete");
+			return;
 			
-			default:
-				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);	// changed variable name 'StAtE' to 'state'		
-			
-			}		
+		default:
+			output("Unhandled state");
+			throw new RuntimeException("FixBookUI : unhandled state :" + state);	// changed variable name 'StAtE' to 'state'		
+		
 		}		
+	 }		
 	}
 
 	
