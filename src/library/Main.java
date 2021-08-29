@@ -137,7 +137,7 @@ public class Main {
 
 	
     private static void payFines() {						// Changed method name 'PAY_FINES' to 'payFines'.
-	new PayFineUI(new PayFineComtrol()).run();				// Changed class name 'pAY_fINE_cONTROL' to 'PayFineComtrol' and 'RuN' to 'run'.
+	new PayFineUI(new PayFineControl()).run();				// Changed class name 'pAY_fINE_cONTROL' to 'PayFineComtrol' and 'RuN' to 'run'.
     }
 
 
