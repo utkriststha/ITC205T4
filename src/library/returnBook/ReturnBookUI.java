@@ -80,7 +80,7 @@ public class ReturnBookUI {
 		output(object);// Changed method name 'oUtPuT' to 'output'
 	}
 	
-	public void setState(uiState state) {// Changed 'sEt_sTaTe' to 'setState' and 'uI_sTaTe' to 'uiState'
+	public void setState(UIState state) {// Changed 'sEt_sTaTe' to 'setState' and 'uI_sTaTe' to 'UIState'
 		this.state = state;//Changed 'StATe' to 'state'
 	}
 
