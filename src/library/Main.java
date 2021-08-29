@@ -19,219 +19,224 @@ import library.returnBook.rETURN_bOOK_cONTROL;
 
 public class Main {
 	
-	private static Scanner IN;
-	private static Library LIB;
-	private static String MENU;
-	private static Calendar CAL;
-	private static SimpleDateFormat SDF;
+    private static Scanner input;				// Changed variable name 'IN' to 'input'.
+    private static Library library;				// Changed variable name 'LIB' to 'library'.
+    private static String menu;					// Changed variable name 'MENU' to 'menu'.
+    private static Calendar calendar;				// Changed variable name 'CAL' to 'calendar'.
+    private static SimpleDateFormat simpleDateFormat; 		// Changed variable name 'SDF' to 'simpleDateFormat'.
 	
-	
-	private static String Get_menu() {
-		StringBuilder sb = new StringBuilder();
+    private static String getMenu() {				// Changed method name 'Get_menu' to 'getMenu'.
+	StringBuilder stringbuilder = new StringBuilder();	// Changed method name 'sb' to 'stringbuilder'.
 		
-		sb.append("\nLibrary Main Menu\n\n")
-		  .append("  M  : add member\n")
-		  .append("  LM : list members\n")
-		  .append("\n")
-		  .append("  B  : add book\n")
-		  .append("  LB : list books\n")
-		  .append("  FB : fix books\n")
-		  .append("\n")
-		  .append("  L  : take out a loan\n")
-		  .append("  R  : return a loan\n")
-		  .append("  LL : list loans\n")
-		  .append("\n")
-		  .append("  P  : pay fine\n")
-		  .append("\n")
-		  .append("  T  : increment date\n")
-		  .append("  Q  : quit\n")
-		  .append("\n")
-		  .append("Choice : ");
+	stringbuilder.append("\nLibrary Main Menu\n\n")		// Changed method name 'sb' to 'stringbuilder'.
+	    .append("  M  : add member\n")
+            .append("  LM : list members\n")
+	    .append("\n")
+       	    .append("  B  : add book\n")
+	    .append("  LB : list books\n")
+	    .append("  FB : fix books\n")
+	    .append("\n")
+	    .append("  L  : take out a loan\n")
+	    .append("  R  : return a loan\n")
+	    .append("  LL : list loans\n")
+	    .append("\n")
+	    .append("  P  : pay fine\n")
+	    .append("\n")
+	    .append("  T  : increment date\n")
+	    .append("  Q  : quit\n")
+	    .append("\n")
+	    .append("Choice : ");
 		  
-		return sb.toString();
-	}
+	return stringbuilder.toString();			// Changed method name 'sb' to 'stringbuilder'.
+    }
 
 
-	public static void main(String[] args) {		
-		try {			
-			IN = new Scanner(System.in);
-			LIB = Library.GeTiNsTaNcE();
-			CAL = Calendar.gEtInStAnCe();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+    public static void main(String[] args) {		
+	try {			
+	    input = new Scanner(System.in);				// Changed variable name 'IN' to 'input'.					
+	    library = Library.getInstance();				// Changed variable name 'LIB' to 'library' and 'GeTiNsTaNcE' to 'getInstance'.	
+	    calendar = Calendar.getInstance();				// Changed variable name 'CAL' to 'calendar' and 'gEtInStAnCe' to 'getInstance'.
+	    simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");	// Changed variable name 'SDF' to 'simpleDateFormat'.		
 	
-			for (Member m : LIB.lIsT_MeMbErS()) {
-				output(m);
-			}
-			output(" ");
-			for (Book b : LIB.lIsT_BoOkS()) {
-				output(b);
-			}
+	    for (Member menu : library.listMembers()) {			// Changed variable name 'm' to 'menu' and 'LIB.lIsT_MeMbErS' to 'library.listMembers'.
+		output(menu);						// Changed variable name 'm' to 'menu'.
+	    }
+		
+	    output(" ");
+		
+	    for (Book book : library.listBooks()) {			// Changed variable name 'b' to 'book' and 'LIB.lIsT_BoOkS' to 'library.listBooks'.
+		output(book);						// Changed variable name 'b' to 'book'.
+	    }
 						
-			MENU = Get_menu();
+	    menu = getMenu();						// Changed variable name 'MENU' to 'menu' and 'Get_menu' to 'getMenu'.
+	    boolean exit = false;					// Changed variable name 'e' to 'exit'.
 			
-			boolean e = false;
-			
-			while (!e) {
+	    while (!exit) {						// Changed variable name 'e' to 'exit'.
 				
-				output("\n" + SDF.format(CAL.gEt_DaTe()));
-				String c = input(MENU);
+	        output("\n" + simpleDateFormat.format(calendar.getDate()));	// Changed variable name 'SDF' to 'simpleDateFormat', 'CAL' to 'calendar' and 'gEt_DaTe' to 'getDate'.
+		String choice = input(menu);					// Changed variable name 'c' to 'choice' and 'MENU' to 'menu'.
 				
-				switch (c.toUpperCase()) {
+	        switch (choice.toUpperCase()) {					// Changed variable name 'c' to 'choice'.
 				
-				case "M": 
-					ADD_MEMBER();
-					break;
+		case "M": 
+		    addMember();						// Changed method name 'ADD_MEMBER' to 'addMember'
+		    break;
 					
-				case "LM": 
-					LIST_MEMBERS();
-					break;
+		case "LM": 
+		    listMembers();						// Changed method name 'LIST_MEMBERS' to 'listMembers'
+		    break;
 					
-				case "B": 
-					ADD_BOOK();
-					break;
+		case "B": 
+		    addBook();							// Changed method name 'ADD_BOOK' to 'addBook'
+		    break;
 					
-				case "LB": 
-					LIST_BOOKS();
-					break;
+		case "LB": 
+		    listBooks();						// Changed method name 'LIST_BOOKS' to 'listBooks'
+		    break;
 					
-				case "FB": 
-					FIX_BOOKS();
-					break;
+		case "FB": 
+		    fixBooks();							// Changed method name 'FIX_BOOKS' to 'fixBooks'
+		    break;
 					
-				case "L": 
-					BORROW_BOOK();
-					break;
+		case "L": 
+		    borrowBook();						// Changed method name 'BORROW_BOOK' to 'borrowBook'
+		    break;
 					
-				case "R": 
-					RETURN_BOOK();
-					break;
+		case "R": 
+		    returnBook();						// Changed method name 'RETURN_BOOK' to 'returnBook'
+		    break;
 					
-				case "LL": 
-					LIST_CURRENT_LOANS();
-					break;
+		case "LL": 	
+		    listCurrentLoans();						// Changed method name 'LIST_CURRENT_LOANS' to 'listCurrentLoans'
+		    break;		
 					
-				case "P": 
-					PAY_FINES();
-					break;
+		case "P": 
+		    payFines();							// Changed method name 'PAY_FINES' to 'payFines'
+		    break;
 					
-				case "T": 
-					INCREMENT_DATE();
-					break;
+		case "T": 
+		    incrementDate();						// Changed method name 'INCREMENT_DATE' to 'incrementDate'
+		    break;
 					
-				case "Q": 
-					e = true;
-					break;
+		case "Q": 
+		    exit = true;						// Changed variable name 'e' to 'exit'.
+		    break;
 					
-				default: 
-					output("\nInvalid option\n");
-					break;
-				}
+		default: 
+		    output("\nInvalid option\n");
+		    break;
+		}
 				
-				Library.SaVe();
-			}			
-		} catch (RuntimeException e) {
-			output(e);
-		}		
-		output("\nEnded\n");
+	        library.save();
+            }									// Changed variable name 'Library' to 'library' and 'SaVe' to 'save'.
+	}  catch (RuntimeException exception) {					// Changed variable name 'e' to 'exception'.
+	       output(exception);						// Changed variable name 'e' to 'exception'.
+	     }		
+	        output("\nEnded\n");
 	}	
 
-		private static void PAY_FINES() {
-		new PayFineUI(new pAY_fINE_cONTROL()).RuN();		
-	}
+	
+    private static void payFines() {						// Changed method name 'PAY_FINES' to 'payFines'.
+	new PayFineUI(new PayFineComtrol()).run();				// Changed class name 'pAY_fINE_cONTROL' to 'PayFineComtrol' and 'RuN' to 'run'.
+    }
 
 
-	private static void LIST_CURRENT_LOANS() {
-		output("");
-		for (Loan loan : LIB.lISt_CuRrEnT_LoAnS()) {
-			output(loan + "\n");
-		}		
-	}
+    private static void listCurrentLoans() {					// Changed method name 'LIST_CURRENT_LOANS' to 'listCurrentLoans'.
+	output("");
+	for (Loan loan : library.listCurrentLoans()) {				// Changed method name 'LIB' to 'library' and 'LIST_CURRENT_LOANS' to 'listCurrentLoans'.
+	    output(loan + "\n");
+	}		
+    }
 
 
-
-	private static void LIST_BOOKS() {
-		output("");
-		for (Book book : LIB.lIsT_BoOkS()) {
-			output(book + "\n");
-		}		
-	}
-
-
-
-	private static void LIST_MEMBERS() {
-		output("");
-		for (Member member : LIB.lIsT_MeMbErS()) {
-			output(member + "\n");
-		}		
-	}
+    private static void listBooks() {						// Changed method name 'lIsT_BoOkS' to 'listBooks'.
+	output("");
+	for (Book book : library.listBooks()) {					// Changed method name 'LIB' to 'library' and 'lIsT_BoOkS' to 'listBooks'.
+	    output(book + "\n");
+	}		
+    }
 
 
 
-	private static void BORROW_BOOK() {
-		new BorrowBookUI(new bORROW_bOOK_cONTROL()).RuN();		
-	}
+    private static void listMembers() {						// Changed method name 'LIST_MEMBERS' to 'listMembers'.
+	output("");
+	for (Member member : library.listMembers()) {				// Changed method name 'LIB' to 'library' and 'LIST_MEMBERS' to 'listMembers'.
+	    output(member + "\n");
+	}		
+    }
 
 
-	private static void RETURN_BOOK() {
-		new ReturnBookUI(new rETURN_bOOK_cONTROL()).RuN();		
-	}
+
+    private static void borrowBook() {						// Changed method name 'BORROW_BOOK' to 'borrowBook'.
+	new BorrowBookUI(new BorrowBookControl()).run();			// Changed method name 'bORROW_bOOK_cONTROL' to 'BorrowBookControl' and 'RuN' to 'run'.
+    }
 
 
-	private static void FIX_BOOKS() {
-		new FixBookUI(new fIX_bOOK_cONTROL()).RuN();		
-	}
+    private static void returnBook() {						// Changed method name 'RETURN_BOOK' to 'returnBook'.
+	new ReturnBookUI(new ReturnBookControl()).run();			// Changed method name 'rETURN_bOOK_cONTROL' to 'ReturnBookControl' and 'RuN' to 'run'.
+    }
 
 
-	private static void INCREMENT_DATE() {
-		try {
-			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CAL.incrementDate(days);
-			LIB.cHeCk_CuRrEnT_LoAnS();
-			output(SDF.format(CAL.gEt_DaTe()));
+    private static void fixBooks() {						// Changed method name 'FIX_BOOKS' to 'fixBooks'.
+	new FixBookUI(new FixBookControl()).run();				// Changed method name 'fIX_bOOK_cONTROL' to 'FixBookControl' and 'RuN' to 'run'.
+    }
+
+
+    private static void incrementDate() {						// Changed method name 'INCREMENT_DATE' to 'incrementDate'.
+	try {
+	    int days = Integer.valueOf(input("Enter number of days: ")).intValue();
+	    calendar.incrementDate(days);						// Changed method name 'CAL' to 'calendar'.
+	    library.checkCurrentLoans();						// Changed method name 'LIB' to 'library' and 'cHeCk_CuRrEnT_LoAnS' to 'checkCurrentLoans'.
+	    output(simpleDateFormat.format(calendar.getDate()));			// Changed method name 'SDF' to 'simpleDateFormat' and 'CAL.gEt_DaTe' to 'calendar.getDate'.
 			
-		} catch (NumberFormatException e) {
-			 output("\nInvalid number of days\n");
-		}
+	} catch (NumberFormatException exception) {					// Changed variable name 'e' to 'exception'.
+	     output("\nInvalid number of days\n");
 	}
+       }
 
 
-	private static void ADD_BOOK() {
+    private static void addBook() {					// Changed method name 'ADD_BOOK' to 'addBook'.
 		
-		String AuThOr = input("Enter author: ");
-		String TiTlE  = input("Enter title: ");
-		String CaLl_NuMbEr = input("Enter call number: ");
-		Book BoOk = LIB.aDd_BoOk(AuThOr, TiTlE, CaLl_NuMbEr);
-		output("\n" + BoOk + "\n");
+        String author = input("Enter author: ");			// Changed variable name 'AuThOr' to 'author'.
+        String title  = input("Enter title: ");				// Changed variable name 'TiTlE' to 'title'.
+        String callNumber = input("Enter call number: ");		// Changed variable name 'CaLl_NuMbEr' to 'callNumber'.
+        Book book = library.addBook(author, title, callNumber);		/** Changed variable name 'BoOk' to 'book', 'LIB.aDd_BoOk' to 'library.addBook', 
+									    'AuThOr' to 'author', 'TiTlE' to 'title', and 'CaLl_NuMbEr' to 'callNumber'.**/
+       													
+       output("\n" + book + "\n");					// Changed variable name 'BoOk' to 'book'.
 		
-	}
+    }
 
 	
-	private static void ADD_MEMBER() {
-		try {
-			String LaSt_NaMe = input("Enter last name: ");
-			String FiRsT_NaMe  = input("Enter first name: ");
-			String EmAiL_AdDrEsS = input("Enter email address: ");
-			int PhOnE_NuMbEr = Integer.valueOf(input("Enter phone number: ")).intValue();
-			Member MeMbEr = LIB.aDd_MeMbEr(LaSt_NaMe, FiRsT_NaMe, EmAiL_AdDrEsS, PhOnE_NuMbEr);
-			output("\n" + MeMbEr + "\n");
+    private static void addMember() {					// Changed method name 'ADD_MEMBER' to 'addMember'.
+	try {
+	    String lastName = input("Enter last name: ");		// Changed variable name 'LaSt_NaMe' to 'lastName'.
+	    String firstName  = input("Enter first name: ");		// Changed variable name 'FiRsT_NaMe' to 'firstName'.
+	    String emailAddress = input("Enter email address: ");	// Changed variable name 'EmAiL_AdDrEsS' to 'emailAddress'.
+	    int phoneNumber = Integer.valueOf(input("Enter phone number: ")).intValue();		// Changed variable name 'PhOnE_NuMbEr' to 'phoneNumber'.
+	    Member member = library.addMember(lastName, firstName, emailAddress, phoneNumber);		/** Changed variable name 'MeMbEr' to 'member', 'LIB.aDd_MeMbEr' to 'library.addMember', 
+									    				'LaSt_NaMe' to 'lastName', 'FiRsT_NaMe' to 'firstName', 'EmAiL_AdDrEsS' to 'emailAddress'
+													and 'PhOnE_NuMbEr' to 'phoneNumber'.**/
+		
+	    output("\n" + member + "\n");		// Changed variable name 'MeMbEr' to 'member'.
 			
-		} catch (NumberFormatException e) {
-			 output("\nInvalid phone number\n");
-		}
+	} catch (NumberFormatException exception) {	// Changed variable name 'e' to 'exception'.
+	    output("\nInvalid phone number\n");
+	}
 		
-	}
+    }
 
 
-	private static String input(String prompt) {
-		System.out.print(prompt);
-		return IN.nextLine();
-	}
+    private static String input(String prompt) {
+	System.out.print(prompt);
+	return input.nextLine();				// Changed variable name 'IN' to 'input'.
+    }
 	
 	
 	
-	private static void output(Object object) {
-		System.out.println(object);
-	}
+    private static void output(Object object) {
+	System.out.println(object);
+    }
 
 	
 }

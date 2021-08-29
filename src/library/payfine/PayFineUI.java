@@ -2,83 +2,83 @@ package library.payfine;
 import java.util.Scanner;
 
 
-public class PayFineUI {
+public class PayFineUI { 
 
+    // Changed indentation from 8 spaces from 4 spaces
+    public static enum UIState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; // changed method name 'uI_sTaTe' to 'UIState'
 
-	public static enum uI_sTaTe { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-
-	private pAY_fINE_cONTROL CoNtRoL;
-	private Scanner input;
-	private uI_sTaTe StAtE;
+    private PayFineControl control; //changed class name 'pAY_fINE_cONTROL' to 'PayFineControl' , 'CoNtRoL' to 'control'
+    private Scanner input;
+    private UIState state; //changed class name 'uI_sTaTe' to 'UIState' , 'StAtE' 'state'
 
 	
-	public PayFineUI(pAY_fINE_cONTROL control) {
-		this.CoNtRoL = control;
-		input = new Scanner(System.in);
-		StAtE = uI_sTaTe.INITIALISED;
-		control.SeT_uI(this);
+    public PayFineUI(PayFineControl control) { //changed class name 'pAY_fINE_cONTROL' to 'PayFineControl'
+	this.control = control; // changed variable name 'this.CoNtRoL' to 'this.control'
+	input = new Scanner(System.in);  
+	state = UIState.INITIALISED; // changed class name 'uI_sTaTe' to 'UIState' and 'StAtE' to 'state'
+	control.setUI(this); // changed method name 'control.SeT_uI' to 'control.setUI'
 	}
 	
 	
-	public void SeT_StAtE(uI_sTaTe state) {
-		this.StAtE = state;
+    public void setState(UIState state) { // chnaged method name 'SeT_StAtE' to 'setState' and 'uI_sTaTe' to 'UIState'
+	this.state = state; // changed variable name 'this.StAtE' to 'this.state'
 	}
 
 
-	public void RuN() {
+    public void run() { // changed method name 'RuN' to 'run'
 		output("Pay Fine Use Case UI\n");
 		
-		while (true) {
+	while (true) {
 			
-			switch (StAtE) {
+		switch (state) { // changed variable name 'StAtE' to 'state'
 			
-			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
-					break;
-				}
-				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					CoNtRoL.CaRd_sWiPeD(Member_ID);
-				}
-				catch (NumberFormatException e) {
-					output("Invalid memberId");
-				}
-				break;
+	 case READY:
+	 String memberString = input("Swipe member card (press <enter> to cancel): "); // changed variable name 'Mem_Str' to 'memberString'
+		if (memberString.length() == 0) { // changed variable name 'Mem_Str.length' to 'memberString.length'
+		   control.CaNcEl(); // changed variable name 'CoNtRoL' to 'control'
+			break;
+			}
+			try {
+			int memberId = Integer.valueOf(memberString).intValue(); // changed variable name 'Member_ID' to 'memberId'
+					control.cardSwiped(memberId); // changed variable name 'CoNtRoL.CaRd_sWiPeD' to 'control.cardSwiped'
+			}
+			catch (NumberFormatException e) {
+				output("Invalid memberId");
+			}
+			break;
 				
-			case PAYING:
-				double AmouNT = 0;
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
-					break;
-				}
-				try {
-					AmouNT = Double.valueOf(Amt_Str).doubleValue();
-				}
-				catch (NumberFormatException e) {}
-				if (AmouNT <= 0) {
-					output("Amount must be positive");
-					break;
-				}
-				CoNtRoL.PaY_FiNe(AmouNT);
+	case PAYING:
+		double amount = 0; // changed variable name 'AmouNT' to 'amount'
+		String amountString = input("Enter amount (<Enter> cancels) : "); // changed variable name 'Amt_Str' to 'amountString'
+		if (amountString.length() == 0) {
+			control.cancel(); // changed variable name 'CoNtRoL.CaNcEl' to 'control.cancel'
+			break;
+		}
+		try {
+			amount = Double.valueOf(amountString).doubleValue(); // changed variable name 'AmouNT' to 'amount' and 'Amt_Str' to 'amountString'
+			}
+			catch (NumberFormatException e) {}
+			if (amount <= 0) { // changed variable name 'AmouNT' to 'amount'
+				output("Amount must be positive");
 				break;
+			}
+			control.payFine(amount); // chnaged variable name 'CoNtRoL.PaY_FiNe' to 'control.payFine'
+			break;
 								
-			case CANCELLED:
-				output("Pay Fine process cancelled");
-				return;
+		case CANCELLED:
+			output("Pay Fine process cancelled");
+			return;
 			
-			case COMPLETED:
-				output("Pay Fine process complete");
-				return;
+		case COMPLETED:
+			output("Pay Fine process complete");
+			return;
 			
-			default:
-				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
-			
-			}		
+		default:
+			output("Unhandled state");
+			throw new RuntimeException("FixBookUI : unhandled state :" + state);	// changed variable name 'StAtE' to 'state'		
+		
 		}		
+	 }		
 	}
 
 	
