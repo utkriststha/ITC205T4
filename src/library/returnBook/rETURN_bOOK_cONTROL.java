@@ -39,43 +39,43 @@ public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL'
 			ui.display"Invalid Book Id");// Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display'
 			return;
 		}
-		if (!cUrReNt_bOoK.iS_On_LoAn()) {
-			Ui.DiSpLaY("Book has not been borrowed");
+		if (!currentBook.isOnLoan()) {// Changed 'cUrReNt_bOoK' to 'currentBook' and 'iS_On_LoAn' to 'isOnLoan'
+			ui.display("Book has not been borrowed");// Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display'
 			return;
 		}		
-		CurrENT_loan = lIbRaRy.GeT_LoAn_By_BoOkId(bOoK_iD);	
-		double Over_Due_Fine = 0.0;
-		if (CurrENT_loan.Is_OvEr_DuE()) 
-			Over_Due_Fine = lIbRaRy.CaLcUlAtE_OvEr_DuE_FiNe(CurrENT_loan);
+		currentLoan = library.getLoanByBookId(bookId);	// Changed variable name 'CurrENT_loan' to 'currentLoan', 'lIbRaRy' to 'library','GeT_LoAn_By_BoOkId' to 'getLoanByBookId' and 'bOoK_iD' to 'bookId'
+		double overDueFine = 0.0;// Changed 'Over_Due_Fine' to 'overDueFine'
+		if (currentLoan.isOverDue()) //Changed variable name 'CurrENT_loan' to 'currentLoan' and 'Is_OvEr_DuE' to 'isOverDue'
+			overDueFine = library.calculateOverDueFine(currentLoan);// Changed 'Over_Due_Fine' to 'overDueFine','lIbRaRy' to 'library','CaLcUlAtE_OvEr_DuE_FiNe' to 'calculateOverDueFine' and 'CurrENT_loan' to 'currentLoan'
 		
-		Ui.DiSpLaY("Inspecting");
-		Ui.DiSpLaY(cUrReNt_bOoK.toString());
-		Ui.DiSpLaY(CurrENT_loan.toString());
+		ui.display("Inspecting");//Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display'
+		ui.display(currentBook.toString());//Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display' and 'cUrReNt_bOoK' to 'currentBook'
+		ui.display(currentLoan.toString());//Changed 'Ui' to 'ui' and 'DiSpLaY' to 'display' and 'CurrENT_loan' to 'currentLoan'
 		
-		if (CurrENT_loan.Is_OvEr_DuE()) 
-			Ui.DiSpLaY(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
+		if (currentLoan.isOverDue()) //Changed variable name 'CurrENT_loan' to 'currentLoan' and 'Is_OvEr_DuE' to 'isOverDue'
+			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));// Changed 'Ui' to 'ui', 'DiSpLaY' to 'display and 'Over_Due_Fine' to 'overDueFine'
 		
-		Ui.sEt_sTaTe(ReturnBookUI.uI_sTaTe.INSPECTING);
-		sTaTe = cOnTrOl_sTaTe.INSPECTING;		
+		ui.setState(ReturnBookUI.uiState.INSPECTING);//Changed 'Ui' to 'ui', 'sEt_sTaTe' to 'setState' and 'uI_sTaTe' to 'uiState'
+		state = controlState.INSPECTING;//Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'		
 	}
 
 
-	public void sCaNnInG_cOmPlEtE() {
-		if (!sTaTe.equals(cOnTrOl_sTaTe.READY)) 
+	public void scanningComplete() {//Changed 'sCaNnInG_cOmPlEtE' to 'scanningComplete'
+		if (!state.equals(controlState.READY))//Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 			
-		Ui.sEt_sTaTe(ReturnBookUI.uI_sTaTe.COMPLETED);		
+		ui.setState(ReturnBookUI.uiState.COMPLETED);//Changed 'Ui' to 'ui', 'sEt_sTaTe' to 'setState' and 'uI_sTaTe' to 'uiState'		
 	}
 
 
-	public void dIsChArGe_lOaN(boolean iS_dAmAgEd) {
-		if (!sTaTe.equals(cOnTrOl_sTaTe.INSPECTING)) 
+	public void dischargeLoan(boolean isDamaged) {// Changed 'dIsChArGe_lOaN' to 'dischargeLoan' and 'iS_dAmAgEd' to 'isDamaged'
+		if (!state.equals(controlState.INSPECTING))//Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'  
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		
-		lIbRaRy.DiScHaRgE_LoAn(CurrENT_loan, iS_dAmAgEd);
-		CurrENT_loan = null;
-		Ui.sEt_sTaTe(ReturnBookUI.uI_sTaTe.READY);
-		sTaTe = cOnTrOl_sTaTe.READY;				
+		library.dischargeLoan(currentLoan, isDamaged);//Changed 'lIbRaRy' to 'library', 'DiScHaRgE_LoAn' to 'dischargeLoan', 'CurrENT_loan' to 'currentLoan' and 'iS_dAmAgEd' to 'isDamaged'
+		currentLoan = null;//Changed 'CurrENT_loan' to 'currentLoan'
+		Ui.setState(ReturnBookUI.uiState.READY);//Changed 'Ui' to 'ui', 'sEt_sTaTe' to 'setState' and 'uI_sTaTe' to 'uiState'
+		state = controlState.READY;//Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'				
 	}
 
 

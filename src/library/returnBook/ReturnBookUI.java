@@ -65,23 +65,23 @@ public class ReturnBookUI {
 	}
 
 	
-	private String iNpUt(String PrOmPt) {
-		System.out.print(PrOmPt);
-		return iNpUt.nextLine();
+	private String input(String prompt) {// Changed method name 'iNpUt' to 'input' and variable name ' PrOmPt' to 'prompt'
+		System.out.print(prompt);//Changed  PrOmPt' to 'prompt'
+		return input.nextLine();//Changed method name 'iNpUt' to 'input'
 	}	
 		
 		
-	private void oUtPuT(Object ObJeCt) {
-		System.out.println(ObJeCt);
+	private void output(Object object) {//Changed method name 'oUtPuT' to 'output' and variable name 'ObJeCt' to 'object'
+		System.out.println(object);//Changed variable name 'ObJeCt' to 'object'
 	}
 	
 			
-	public void DiSpLaY(Object object) {
-		oUtPuT(object);
+	public void display(Object object) {// changed 'DiSpLaY' to 'display'
+		output(object);// Changed method name 'oUtPuT' to 'output'
 	}
 	
-	public void sEt_sTaTe(uI_sTaTe state) {
-		this.StATe = state;
+	public void setState(uiState state) {// Changed 'sEt_sTaTe' to 'setState' and 'uI_sTaTe' to 'uiState'
+		this.state = state;//Changed 'StATe' to 'state'
 	}
 
 	

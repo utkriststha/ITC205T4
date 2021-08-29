@@ -43,24 +43,24 @@ public class PayFineControl { // changed class name 'pAY_fINE_cONTROL' to 'PayFi
 	}
 	
 	
-    public void CaNcEl() {
-		Ui.SeT_StAtE(PayFineUI.uI_sTaTe.CANCELLED);
-		StAtE = cOnTrOl_sTaTe.CANCELLED;
+    public void cancel() { // changed method name 'CaNcEl' to 'cancel'
+		ui.setState(PayFineUI.uiState.CANCELLED); // changed variable name 'Ui.SeT_StAtE' to 'ui.setState' and 'uI_sTaTe' to 'uiState'
+		state = controlState.CANCELLED; // changed variable 'StAtE' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
 	}
 
 
-    public double PaY_FiNe(double AmOuNt) {
-		if (!StAtE.equals(cOnTrOl_sTaTe.PAYING)) 
+    public double payFine(double amount) { // changed method name 'PaY_FiNe' to 'payFine' and 'AmOuNt' to 'amount'
+		if (!state.equals(controlState.PAYING)) // changed variable name 'StAtE.equals' to 'state.equals' and 'cOnTrOl_sTaTe' to 'controlState'
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 			
-		double ChAnGe = MeMbEr.PaY_FiNe(AmOuNt);
-		if (ChAnGe > 0) 
-			Ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
+		double change = member.payFine(amount); // changed variable name 'ChAnGe' to 'change' and 'MeMbEr.PaY_FiNe' to 'member.payFine' and 'AmOuNt' to 'amount'
+		if (change > 0)  // changed variable name 'ChAnGe' to 'change'
+			ui.display(String.format("Change: $%.2f", change)); // changed variable 'Ui.DiSplAY' to 'ui.display' and 'ChAnGe' to 'change'
 		
-		Ui.DiSplAY(MeMbEr.toString());
-		Ui.SeT_StAtE(PayFineUI.uI_sTaTe.COMPLETED);
-		StAtE = cOnTrOl_sTaTe.COMPLETED;
-		return ChAnGe;
+		ui.display(member.toString()); // changed variable name 'Ui.DiSplAY' to 'ui.display' and 'MeMbEr.toString' to 'member.toString'
+		ui.setState(PayFineUI.uiState.COMPLETED); // changed variable name 'Ui.SeT_StAtE' to 'ui.setState' and 'uI_sTaTe' to 'uiState'
+		state = controlState.COMPLETED; // changed variable name 'StAtE' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
+		return change; // changed variable name 'ChAnGe' to 'change'
 	}
 	
 
