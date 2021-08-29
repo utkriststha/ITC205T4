@@ -14,12 +14,12 @@ public class ReturnBookUI {
 	public ReturnBookUI(ReturnBookControl control) {// variable name changed from 'rETURN_bOOK_cONTROL' to 'ReturnBookControl' and 'cOnTrOL' to 'control'
 		this.control = control;// changed variable name 'CoNtRoL' to 'control' and 'cOnTrOL' to 'control'
 		input = new Scanner(System.in);//' iNpUt' changed to 'input'
-		StATe = UIState.INITIALISED;// Changed 'StATe' to 'state' and 'uI_sTaTe' to 'UIState' 
+		state = UIState.INITIALISED;// Changed 'StATe' to 'state' and 'uI_sTaTe' to 'UIState' 
 		control.setUI(this);// Changed 'cOnTrOL.sEt_uI' to 'control.setUI'
 	}
 
 
-	public void run() {		// Changed class name 'RuN' to ''run
+	public void run() {// Changed class name 'RuN' to ''run
 		output("Return Book Use Case UI\n");// Changed method name 'oUtPuT' to 'output'
 		
 		while (true) {
@@ -31,7 +31,7 @@ public class ReturnBookUI {
 				
 			case READY:
 				String BookInputString = input("Scan Book (<enter> completes): ");// Changed 'BoOk_InPuT_StRiNg' to 'BookInputString' and 'iNpUt' to 'input'
-				if (BoOk_InPuT_StRiNg.length() == 0) // Changed 'BoOk_InPuT_StRiNg' to 'BookInputString' 
+				if (BookInputString() == 0) // Changed 'BoOk_InPuT_StRiNg' to 'BookInputString' 
 					control.scanningComplete();// Changed 'CoNtRoL' to 'control' and 'sCaNnInG_cOmPlEtE' to 'scanningComplete'
 				
 				else {
@@ -46,9 +46,9 @@ public class ReturnBookUI {
 				break;				
 				
 			case INSPECTING:
-				String ans = input("Is book damaged? (Y/N): ");// Changed variable name 'AnS' to 'ans' and method name  'iNpUt' to 'input'
+				String answer = input("Is book damaged? (Y/N): ");// Changed variable name 'AnS' to 'answer' and method name  'iNpUt' to 'input'
 				boolean isDamaged = false;// Changed 'Is_DAmAgEd' to 'isDamaged'
-				if (ans.toUpperCase().equals("Y")) //Changed variable name 'AnS' to 'ans' 			
+				if (answer.toUpperCase().equals("Y")) //Changed variable name 'AnS' to 'ans' 			
 					isDamaged = true;//Changed 'Is_DAmAgEd ' to 'isDamaged'
 				
 				control.dischargeLoan(isDamaged);// Changed 'CoNtRoL' to 'control', 'dIsChArGe_lOaN' to 'dischargeLoan' and 'Is_DAmAgEd' to 'isDamaged'
