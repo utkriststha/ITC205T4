@@ -4,7 +4,7 @@ import library.entities.Library;
 import library.entities.Loan;
 
 public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL' to 'ReturnBookControl'
-// indents size are changed to 4 spaces
+// indents size are fixed to 4 spaces
 	private ReturnBookUI Ui;
 	private enum controlState { INITIALISED, READY, INSPECTING };// Changed 'cOnTrOl_sTaTe' to 'controlState'
 	private controlState State;// Changed class name 'cOnTrOl_sTaTe sTaTe' to 'ControlState State'
