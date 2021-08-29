@@ -4,33 +4,33 @@ import library.entities.Library;
 import library.entities.Loan;
 
 public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL' to 'ReturnBookControl'
-// indents size are changed to 4 spaces
-	private ReturnBookUI Ui;
-	private enum controlState { INITIALISED, READY, INSPECTING };// Changed 'cOnTrOl_sTaTe' to 'controlState'
-	private controlState State;// Changed class name 'cOnTrOl_sTaTe sTaTe' to 'ControlState State'
+// indents size are fixed to 4 spaces
+	private ReturnBookUI ui;//changed 'Ui' to 'ui'
+	private enum ControlState { INITIALISED, READY, INSPECTING };// Changed 'cOnTrOl_sTaTe' to 'ControlState'
+	private ControlState State;// Changed class name 'cOnTrOl_sTaTe sTaTe' to 'ControlState State'
 	
 	private Library library;// Changed class name 'lIbRaRy' to 'library'
 	private Loan currentLoan;// Changed 'CurrENT_loan' to 'CurrentLoan'
 	
 
 	public ReturnBookControl() {// Changed class name 'rETURN_bOOK_cONTROL' to 'ReturnBookControl'
-		this.library = Library.getInstanc();//Changed variable name 'lIbRaRy' to 'library' and 'GeTiNsTaNcE' to 'getInstance'
-		state = controlState.INITIALISED;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
+		this.library = Library.getInstance();//Changed variable name 'lIbRaRy' to 'library' and 'GeTiNsTaNcE' to 'getInstance'
+		state = ControlState.INITIALISED;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'
 	}
 	
 	
 	public void setUI(ReturnBookUI ui) {// Changed 'sEt_uI' to 'setUI' and  ' uI' to 'ui'
-		if (!state.equals(controlState.INITIALISED)) // Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'
+		if (!state.equals(ControlState.INITIALISED)) // Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		
 		this.ui = ui;// Changed 'Ui' to 'ui' and 'uI' to 'ui'
 		ui.setState(ReturnBookUI.UIstate.READY);//// Changed 'uI' to 'ui', 'set_sTaTe' to 'setState' and 'uI_sTaTe' to 'UIstate'
-		state = controlState.READY;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'		
+		state = ControlState.READY;// Changed class name 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'		
 	}
 
 
 	public void bookScanned(int bookId) {// Changed 'bOoK_sCaNnEd' to 'bookScanned' and 'bOoK_iD' to 'bookId'
-		if (!state.equals(controlState.READY)) // Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
+		if (!state.equals(ControlState.READY)) // Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		
 		Book currentBook =library.getBook(bookId);// Changed 'cUrReNt_bOoK ' to 'currentBook', 'lIbRaRy' to 'library', 'gEt_BoOk' to 'getBook' and 'bookId'
@@ -56,12 +56,12 @@ public class ReturnBookControl {// Class name changed from 'rETURN_bOOK_cONTROL'
 			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));// Changed 'Ui' to 'ui', 'DiSpLaY' to 'display and 'Over_Due_Fine' to 'overDueFine'
 		
 		ui.setState(ReturnBookUI.uiState.INSPECTING);//Changed 'Ui' to 'ui', 'sEt_sTaTe' to 'setState' and 'uI_sTaTe' to 'uiState'
-		state = controlState.INSPECTING;//Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'		
+		state = ControlState.INSPECTING;//Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'ControlState'		
 	}
 
 
 	public void scanningComplete() {//Changed 'sCaNnInG_cOmPlEtE' to 'scanningComplete'
-		if (!state.equals(controlState.READY))//Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
+		if (!state.equals(ControlState.READY))//Changed 'sTaTe' to 'state' and 'cOnTrOl_sTaTe' to 'controlState'
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 			
 		ui.setState(ReturnBookUI.uiState.COMPLETED);//Changed 'Ui' to 'ui', 'sEt_sTaTe' to 'setState' and 'uI_sTaTe' to 'uiState'		
